@@ -1,5 +1,22 @@
 local plugins = {
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "c",
+        "cpp"
+      },
+    },
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
@@ -10,6 +27,7 @@ local plugins = {
         "css-lsp",
         "html-lsp",
         "clang-format",
+        "codelldb",
         "stylua",
         "rustfmt"
       }

@@ -2,52 +2,24 @@
     "layer": "top",
     "position": "top",
     "height": 20,
-    "width": 1920,
-    "modules-left": ["hyprland/window", "group/connection", "group/hardware", "pulseaudio"],
+    "spacing": 7,
+    "width": 1900,
+    "margin": "10px 100px 0px 100px",
+    "modules-left": ["mpris", "pulseaudio"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["clock", "tray"],
-    "group/connection": {
-      "orientation": "horizontal",
-      "modules": ["network", "bluetooth"]
-    },
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "",
-        "format-off": "",
-        "interval": 30,
-        "on-click": "blueman-manager"
-    },
-    "group/hardware": {
-      "orientation": "horizontal",
-      "modules": ["temperature", "cpu", "memory", "battery"]
-    },
-    "hyprland/window": {
-      "format": "{class}"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
+    "modules-right": ["network", "battery", "clock", "tray"],
+    "mpris": {
+      "format": "{title} {status_icon}",
+      "status-icons": {
+          "playing": "",
+          "paused": "󰏤",
+      }
     },
     "tray": {
         "spacing": 10
     },
     "clock": {
-        "format": "{:%a %b %d, %I:%M %p}  "
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{:%a %b %d, %I:%M %p} "
     },
     "battery": {
         "states": {
@@ -62,7 +34,7 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
@@ -72,11 +44,11 @@
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": "󰋋",
             "hands-free": "",
             "headset": "",
             "phone": "",

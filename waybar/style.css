@@ -2,82 +2,66 @@
 
 * {
     font-family: JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0);
-    border-bottom: 0px solid @catblue;
-    background: transparent;
+    background-color: rgba(17,17,27,0.7);
+    border-bottom: 0px solid #ffffff;
+    border-radius: 40px;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 #workspaces {
-    background: @catsurface0;
-    margin: 5px 5px 5px 5px;
-    padding: 4px 1px;
-    border-radius: 12px;
+    background: transparent;
+    padding: 0px 10px 0px 10px;
+    margin: 7px 0px 7px 0px;
+    border-radius: 15px;
     font-weight: normal;
     font-style: normal;
-    opacity:0.8;
+    opacity: 0.8;
 }
 
 #workspaces button {
     padding: 0px 10px;
     margin: 0px 3px;
-    border-radius: 12px;
-    color: @catblue;
-    background-color: @catblue;
-    transition: all 0.3s ease-in-out;
-    opacity:0.4;
-    font-size:13px;
-}
-
-#workspaces button.active {
+    border-radius: 15px;
+    border: 0px;
     color: @catsurface0;
     background-color: @catblue;
-    border-radius: 10px;
-    min-width: 30px;
-    background-size: 400% 400%;
     transition: all 0.3s ease-in-out;
-    opacity:1.0;
-}
-
-#workspaces button:hover {
-    background-color: @catcrust;
-    opacity: 0.8;
-    color: @catblue;
-    border-radius: 10px;
-    min-width: 30px;
-    background-size: 400% 400%;
-}
-
-tooltip label {
-    color: @catsurface0;
-}
-
-window#waybar.empty #window {
-    background-color:transparent;
-}
-
-#memory,#cpu,#window,#clock,#pulseaudio,#network,#bluetooth.on, #bluetooth.connected, #battery, #tray, #bluetooth.on, #bluetooth.connected {
-    background-color: @catsurface0;
-    font-size: 13px;
-    color: @catblue;
-    border-radius: 12px;
-    padding: 0px 10px 0px 10px;
-    margin: 5px 0px 5px 10px;
     opacity:0.8;
 }
 
-#battery {
-    padding: 0px 15px 0px 10px;
+#workspaces button.active {
+    background-color: @catblue;
+    min-width: 30px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.8;
 }
 
-#tray {
-  margin: 5px 10px 5px 10px
+#workspaces button:hover {
+    background-color: @catsky;
+    min-width: 30px;
 }
+
+#clock, #pulseaudio, #network, #battery, #tray, #mpris {
+    color: @catsurface0;
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    margin: 7px 0px 7px 0px;
+    opacity:0.8;
+}
+#mpris   { margin-left: 7px; }
+#tray    { margin-right: 7px; }
+#battery { padding-right: 13px; }
+
+#mpris      { background-color: @catgreen; }
+#pulseaudio { background-color: @catrosewater; }
+#network    { background-color: @catred; }
+#battery    { background-color: @catpeach; }
+#clock      { background-color: @catyellow; }
 
 @keyframes blink {
     to {
@@ -87,27 +71,10 @@ window#waybar.empty #window {
 }
 
 #battery.critical:not(.charging) {
-    color: @catred;
+    background-color: @catred;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @catblue;
-}
-
-label:focus {
-    background-color: @catcrust;
-}
-
-#network.disconnected {
-    background-color: @catred;
 }
