@@ -1,4 +1,4 @@
-@import '../catppuccinPalette.css';
+@import '../../.cache/wal/colors-waybar.css';
 
 * {
     font-family: JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono, JetBrainsMono;
@@ -6,72 +6,101 @@
 }
 
 window#waybar {
-    background-color: rgba(17,17,27,0.7);
+    background-color: rgba(0,0,0,1);
+    background: transparent;
     border-bottom: 0px solid #ffffff;
-    border-radius: 40px;
-    transition-property: background-color;
-    transition-duration: .5s;
+    transition-property: none;
+    transition-duration: 0s;
 }
 
 #workspaces {
-    background: transparent;
-    padding: 0px 10px 0px 10px;
-    margin: 7px 0px 7px 0px;
+    padding: 0px 5px 0px 5px;
     border-radius: 15px;
     font-weight: normal;
     font-style: normal;
-    opacity: 0.8;
 }
 
 #workspaces button {
-    padding: 0px 10px;
-    margin: 0px 3px;
+    padding: 1px 10px 1px 10px;
+    margin: 0px 5px 0px 0px;
     border-radius: 15px;
     border: 0px;
-    color: @catsurface0;
-    background-color: @catblue;
-    transition: all 0.3s ease-in-out;
-    opacity:0.8;
+    color: @color4;
+    background-color: @background;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out
 }
 
 #workspaces button.active {
-    background-color: @catblue;
-    min-width: 30px;
-    transition: all 0.3s ease-in-out;
+    border-style: solid;
+    border-width: 3px;
+    border-color: @color4;
+    min-width: 20px;
     opacity: 0.8;
+    transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-    background-color: @catsky;
     min-width: 30px;
 }
 
-#clock, #pulseaudio, #network, #battery, #tray, #mpris {
-    color: @catsurface0;
+#clock, #pulseaudio, #network, #battery, #tray, #mpris, #cpu, #memory, #temperature, #custom-weather, #window {
+    color: @background;
     border-radius: 15px;
-    padding: 0px 10px 0px 10px;
-    margin: 7px 0px 7px 0px;
-    opacity:0.8;
+    border-style: solid;
+    border-width: 3px;
+    padding: 1px 10px 1px 10px;
+    margin: 0px 5px 0px 0px;
 }
-#mpris   { margin-left: 7px; }
-#tray    { margin-right: 7px; }
-#battery { padding-right: 13px; }
+#mpris {
+    margin-left: 0px;
+    margin-right: 5px;
+    background-color: @color2;
+    padding-right: 0px;
+}
+#pulseaudio {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: @color2;
+}
+#memory, #cpu {
+    margin-right: 0px;
+    padding-right: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right-width: 0px;
+}
+#memory, #battery {
+    margin-left: 0px;
+    padding-left: 2px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left-width: 0px;
+}
+#battery    { padding-right: 13px; }
 
-#mpris      { background-color: @catgreen; }
-#pulseaudio { background-color: @catrosewater; }
-#network    { background-color: @catred; }
-#battery    { background-color: @catpeach; }
-#clock      { background-color: @catyellow; }
+#network, #window    { background-color: @color3; }
+#battery, #cpu, #memory, #temperature
+            { background-color: @color5; }
+#clock, #custom-weather      { background-color: @color1; }
+#custom-weather      { margin-right: 0px; }
+
+#window {
+    margin-right: 0px;
+    margin-left: 0px;
+}
 
 @keyframes blink {
     to {
-        background-color: @catblue;
+        background-color: @color4;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: @catred;
+    background-color: @color8;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

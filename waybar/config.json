@@ -1,19 +1,42 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 20,
-    "spacing": 7,
+    "height": 10,
     "width": 1900,
-    "margin": "10px 100px 0px 100px",
-    "modules-left": ["mpris", "pulseaudio"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["network", "battery", "clock", "tray"],
+    "reload-style-on-change": true,
+    "margin": "10px 0px 0px 0px",
+    "modules-left": ["hyprland/window", "hyprland/workspaces"],
+    "modules-right": ["group/audio", "custom/weather"],
+    "modules-center": ["network", "group/hardware", "clock"],
+    "group/hardware": {
+      "orientation": "inherit",
+      "modules": ["cpu", "memory", "battery"]
+    },
+    "group/audio": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true,
+      },
+      "modules": ["pulseaudio", "mpris"]
+    },
+    "custom/weather": {
+        "orientation": "horizontal",
+        "exec": "curl wttr.in/?format=\"%l:%20%t\"",
+        "interval": 10,
+    },
+    "cpu": {
+      "interval": 10,
+      "format": "{usage}%  "
+    },
+    "memory": {
+      "interval": 10,
+      "format": "{percentage}%  "
+    },
     "mpris": {
-      "format": "{title} {status_icon}",
-      "status-icons": {
-          "playing": "",
-          "paused": "󰏤",
-      }
+      "format-playing": "  {title}  ",
+      "format-paused": "󰏤 {title}  ",
+      "format-stopped": "Nothing Playing",
     },
     "tray": {
         "spacing": 10
@@ -28,10 +51,10 @@
             "critical": 10
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["󰁻", "󰁽", "󰁿", "󰂀", "󰁹"]
+    },
+    "hyprland/window": {
+        "format": "{class}",
     },
     "network": {
         "format-wifi": "{essid} ",
