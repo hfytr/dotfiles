@@ -1,0 +1,54 @@
+@import '../../.cache/wal/colors-waybar.css';
+window {
+    font-family: "JetBrainsMono NFMM";
+    font-size: 16pt;
+    color: @color1;
+    background-color: rgba(24, 27, 32, 0.8);
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: transparent;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s ease-in;
+    box-shadow: 0 0 10px 2px transparent;
+    margin: 10px;
+}
+
+button:focus {
+    box-shadow: none;
+    background-size: 30%;
+}
+
+button:hover {
+    background-size: 50%;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+    color: transparent;
+    transition: all 0.4s cubic-bezier(0.55, 0, 0.28, 1.682), box-shadow 1s ease-in;
+}
+
+#shutdown {
+    background-image: image(url("../../nixos/assets/icons/power.png"));
+}
+
+#logout {
+    background-image: image(url("../../nixos/assets/icons/logout.png"));
+}
+
+#reboot {
+    background-image: image(url("../../nixos/assets/icons/restart.png"));
+}
+
+#lock {
+    background-image: image(url("../../nixos/assets/icons/lock.png"));
+}
+
+#hibernate {
+    background-image: image(url("../../nixos/assets/icons/hibernate.png"));
+}
+
+#suspend {
+    background-image: image(url("../../nixos/assets/icons/suspend.png"));
+}

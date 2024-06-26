@@ -11,7 +11,7 @@
       ns = "NIXPKGS_ALLOW_UNFREE=1 nix-shell";
       tma = "tmux new -A -s";
       tmk = "tmux kill-server";
-      fastfetch-tmux = "kitten icat --align=left ~/.config/maro.png | fastfetch --raw - --logo-width 20 --logo-height 12";
+      fastfetch-tmux = "kitten icat --align=left ~/nixos/assets/maro.png| fastfetch --raw - --logo-width 20 --logo-height 12";
     };
 
     functions.fish_greeting = "fastfetch-tmux";

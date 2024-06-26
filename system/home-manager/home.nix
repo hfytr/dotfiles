@@ -14,6 +14,7 @@
     ./wal
     ./nvim
     ./scripts
+    ./wlogout
   ];
 
   home.username = "fbwdw";
