@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+set imgpath (nsxiv -tbor -s F ~/.config/wallpapers)
+singlebg "$imgpath"

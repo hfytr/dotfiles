@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+swww img "$argv" --resize=crop --transition-type outer --transition-pos 0.8,0.8 --transition-bezier .59,.15,.36,1
+wal -i $argv
+
+killall waybar
+waybar -c ~/.config/waybar/config.json -s ~/.config/waybar/style.css &
+
+pywalfox update
+touch $HOME/.cache/rofi-current-wallpaper.rasi
+if [ -n "$argv" ]
+    echo "hizzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+    echo "* { current-wallpaper: url(\"$argv\", height); }" > $HOME/.cache/rofi-current-wallpaper.rasi
+else
+    echo "hieahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+end
