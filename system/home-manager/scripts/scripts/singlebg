@@ -7,9 +7,8 @@ waybar -c ~/.config/waybar/config.json -s ~/.config/waybar/style.css &
 
 pywalfox update
 touch $HOME/.cache/rofi-current-wallpaper.rasi
+touch $HOME/.cache/hyprland-current-wallpaper.conf
 if [ -n "$argv" ]
-    echo "hizzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
     echo "* { current-wallpaper: url(\"$argv\", height); }" > $HOME/.cache/rofi-current-wallpaper.rasi
-else
-    echo "hieahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    echo "\$current-wallpaper = $argv" > $HOME/.cache/hyprland-current-wallpaper.conf
 end

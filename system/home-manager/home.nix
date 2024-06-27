@@ -54,6 +54,7 @@
     obsidian
     ollama
     playerctl
+    pipes-rs
     ripgrep
     rustup
     slurp
