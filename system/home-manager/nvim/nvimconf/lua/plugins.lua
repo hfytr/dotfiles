@@ -85,14 +85,6 @@ require("lazy").setup({
     },
     { "windwp/nvim-autopairs", opts = {} },
     {
-        "stevearc/oil.nvim",
-        opts = {
-            view_options = { show_hidden = true },
-        },
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        lazy = true,
-    },
-    {
         "saccarosium/neomarks",
         config = function()
             require("configs.neomark")
@@ -136,17 +128,19 @@ require("lazy").setup({
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        lazy = false,
+        lazy = true,
         config = function()
             require("configs.fzf-lua")
         end,
     },
     {
-        "sindrets/diffview.nvim",
-        opts = {},
-        lazy = true,
+        "goolord/alpha-nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("alpha").setup(require("alpha.themes.startify").config)
+        end,
     },
+    { "echasnovski/mini.files", version = "*", opts = {} },
 }, {})
 
 require("configs.quickfix")
-require("configs.marks")

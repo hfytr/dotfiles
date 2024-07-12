@@ -32,8 +32,9 @@
 
       bind e capture-pane -S - -E - \; save-buffer /tmp/tmux_scrollback.txt \; run-shell "nvim /tmp/tmux_scrollback.txt"
 
-      bind '"' split-window -v -c "#{pane_current_path}"
-      bind % split-window -h -c "#{pane_current_path}"
+      bind '"' split-window -h -c "#{pane_current_path}"
+      bind % split-window -v -c "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
     '';
 
     catppuccin.extraConfig = ''

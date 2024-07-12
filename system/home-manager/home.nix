@@ -7,6 +7,7 @@
     ./starship.nix
     ./neomutt.nix
     ./tmux.nix
+    ./firefox
     ./hypr
     ./waybar
     ./kitty
@@ -37,7 +38,6 @@
     eza
     git
     feh
-    firefox
     fzf
     gitleaks
     hevea
