@@ -3,12 +3,12 @@
   home.packages = [ pkgs.firefox ];
 
   home.file = {
-    ".mozilla/firefox/trpcdpo2.default/chrome/theme" = {
+    ".mozilla/firefox/i57zxbwd.default/chrome/theme" = {
       source = ./theme;
       recursive = true;
     };
-    ".mozilla/firefox/trpcdpo2.default/chrome/userChrome.css".source = ./userChrome.css;
-    ".mozilla/firefox/trpcdpo2.default/chrome/userContent.css".source = ./userContent.css;
-    ".mozilla/firefox/trpcdpo2.default/user.js".source = ./user.js;
+    ".mozilla/firefox/i57zxbwd.default/chrome/userChrome.css".source = ./userChrome.css;
+    ".mozilla/firefox/i57zxbwd.default/chrome/userContent.css".source = ./userContent.css;
+    ".mozilla/firefox/i57zxbwd.default/user.js".source = ./user.js;
   };
 }

@@ -90,6 +90,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     (callPackage ./sugar-candy.nix{}).sddm-sugar-candy-theme
+    gcc
     git
     gnumake
     libsForQt5.qt5.qtgraphicaleffects

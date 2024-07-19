@@ -1,12 +1,15 @@
 { config, pkgs, lib, ... }:
-{
+let rrtui = import ./rrtui.nix { inherit pkgs; };
+in {
   imports = [
     ./pywalfox.nix
+    ./swaync.nix
     ./fish.nix
     ./fastfetch.nix
     ./starship.nix
     ./neomutt.nix
     ./tmux.nix
+    ./discord
     ./firefox
     ./hypr
     ./waybar
@@ -28,17 +31,16 @@
   
   home.packages = with pkgs; [
     bc
-    betterdiscordctl
     blender
     btop
     cava
     curl
     dbus
-    discord
     eza
     git
     feh
     fzf
+    gcalcli
     gitleaks
     hevea
     imagemagick
@@ -55,7 +57,9 @@
     ollama
     playerctl
     pipes-rs
+    prismlauncher
     ripgrep
+    rrtui
     rustup
     slurp
     stylua
@@ -66,6 +70,8 @@
     zathura
     zoxide
     zoom
+    # zulu17
+    zulu8
   ];
 
   home.file = {};
@@ -74,7 +80,7 @@
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
     RUST_BACKTRACE = 1;
-    PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin";
+    PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin";
   };
 
   programs.home-manager.enable = true;
