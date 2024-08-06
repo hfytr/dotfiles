@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
   ];
 
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -98,6 +97,7 @@
     sddm
     fish
   ];
+  programs.steam.enable = true;
   # for Vial firmware
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"

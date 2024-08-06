@@ -2,6 +2,8 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local eopts = { noremap = true, expr = true, silent = true }
 
+map("n", "$", "g$")
+map("n", "0", "g0")
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", eopts)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", eopts)
 map({ "n", "v" }, "<PageUp>", function()

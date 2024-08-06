@@ -6,8 +6,8 @@
     src = pkgs.fetchFromGitHub {
         owner = "hfytr";
         repo = "royal_rust";
-        rev = "db728e6a183b355ac51d8a00a5eff1b57e77dbe4";
-        hash = "sha256-GeraaKoZopHxj9OlqPzp3fYOPbKYKb9h/Is4a297vSM=";
+        rev = "be1320ccc158105ccc88ccb982eef615a3c8af63";
+        hash = "sha256-71ED4giPHofAPqSUimBngQ6HwsVz+LjVBs+dl7BwElU=";
     };
 
     cargoHash = "sha256-OmUryz5MCxHCIMDtGPhTPmNUUOLEM0v49J4rX2UdlYg=";

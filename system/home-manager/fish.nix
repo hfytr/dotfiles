@@ -30,6 +30,8 @@
       zoxide init fish --cmd cd | source
       starship init fish | source
       enable_transience
+      eval (ssh-agent -c) && ssh-add ~/.private/git
+      clear
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
   };

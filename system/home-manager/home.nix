@@ -46,6 +46,7 @@ in {
     imagemagick
     just
     jq
+    texliveMedium
     libinput
     lldb
     mkpasswd
@@ -57,21 +58,19 @@ in {
     ollama
     playerctl
     pipes-rs
-    prismlauncher
     ripgrep
     rrtui
-    rustup
     slurp
+    # steam
     stylua
     toybox
+    telegram-desktop
     unzip
     vial
     vscode
     zathura
     zoxide
     zoom
-    # zulu17
-    zulu8
   ];
 
   home.file = {};
@@ -79,8 +78,14 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
-    RUST_BACKTRACE = 1;
     PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin";
+  };
+
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   programs.home-manager.enable = true;

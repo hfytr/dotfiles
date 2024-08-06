@@ -141,6 +141,14 @@ require("lazy").setup({
         end,
     },
     { "echasnovski/mini.files", version = "*", opts = {} },
+    {
+        "lervag/vimtex",
+        lazy = false,
+        ft = "tex",
+        config = function()
+            require("configs.vimtex")
+        end,
+    },
 }, {})
 
 require("configs.quickfix")
