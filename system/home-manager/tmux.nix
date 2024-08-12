@@ -6,6 +6,7 @@
     baseIndex = 1;
     prefix = "C-Space";
     keyMode = "vi";
+    newSession = true;
 
     plugins = with pkgs.tmuxPlugins; [
       yank
@@ -23,6 +24,14 @@
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+      bind -n M-Y select-pane -L
+      bind -n M-H select-pane -D
+      bind -n M-A select-pane -U
+      bind -n M-E select-pane -R
+
+      bind -n M-C new-window
+      bind -n M-Z resize-pane -Z
 
       bind -n M-N select-window -t 1
       bind -n M-R select-window -t 2
@@ -45,6 +54,9 @@
 
       set -g @catppuccin_window_current_background "#313244"
       set -g @catppuccin_window_default_background "#313244"
+
+      set -g @catppuccin_pane_border_style "fg=#a6e3a1"
+      set -g @catppuccin_pane_active_border_style "fg=#89b4fa"
       
       set -g @catppuccin_window_default_fill "number"
       set -g @catppuccin_window_default_text "#W"

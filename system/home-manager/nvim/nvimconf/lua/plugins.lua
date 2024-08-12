@@ -104,28 +104,6 @@ require("lazy").setup({
         lazy = false,
     },
     {
-        "folke/flash.nvim",
-        opts = {
-            modes = {
-                char = {
-                    enabled = false,
-                },
-            },
-        },
-        event = "VeryLazy",
-        keys = {
-            {
-                "<BS>",
-                mode = { "n", "x", "o" },
-                function()
-                    require("flash").jump()
-                end,
-                desc = "Flash",
-            },
-        },
-        lazy = true,
-    },
-    {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = true,

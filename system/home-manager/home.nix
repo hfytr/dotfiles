@@ -58,10 +58,10 @@ in {
     ollama
     playerctl
     pipes-rs
+    prismlauncher
     ripgrep
     rrtui
     slurp
-    # steam
     stylua
     toybox
     telegram-desktop
@@ -71,6 +71,7 @@ in {
     zathura
     zoxide
     zoom
+    zulu8
   ];
 
   home.file = {};
