@@ -127,6 +127,15 @@ require("lazy").setup({
             require("configs.vimtex")
         end,
     },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        lazy = false,
+        opts = {
+            enable = true,
+            max_lines = 4,
+            line_numbers = false,
+        },
+    },
 }, {})
 
 require("configs.quickfix")

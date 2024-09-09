@@ -40,12 +40,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.txt",
+    callback = function()
+        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+        vim.cmd("normal! G0Vgggq")
+        vim.api.nvim_win_set_cursor(0, { row, col })
+    end,
+})
+
 require("mappings")
 
 vim.cmd("colorscheme catppuccin")
 vim.o.guicursor = "n-v-c:block,i-r-ci-cr-sm:block-blinkwait0-blinkon30-blinkoff30"
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.scrolloff = 15
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.o.tabstop = 4
