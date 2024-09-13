@@ -76,7 +76,7 @@
     },
     "network": {
         "format-wifi": "{essid} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -89,8 +89,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "󰋋",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "󰥰",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",

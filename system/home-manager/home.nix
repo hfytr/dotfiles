@@ -7,6 +7,7 @@ in {
     ./fish.nix
     ./fastfetch.nix
     ./starship.nix
+    ./ncmpcpp.nix
     ./neomutt.nix
     ./tmux.nix
     ./discord
@@ -30,6 +31,7 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
   
   home.packages = with pkgs; [
+    arduino-ide
     bc
     blender
     btop
@@ -39,6 +41,7 @@ in {
     eza
     git
     feh
+    ffmpeg_7
     fzf
     gcalcli
     gitleaks
@@ -58,6 +61,9 @@ in {
     ollama
     playerctl
     pipes-rs
+    (python312.withPackages (python-pkgs: with python-pkgs; [
+     pyserial 
+    ]))
     prismlauncher
     ripgrep
     rrtui
@@ -67,11 +73,14 @@ in {
     telegram-desktop
     unzip
     vial
+    vlc
     vscode
+    webtorrent_desktop
+    yt-dlp
     zathura
     zoxide
     zoom
-    zulu8
+    zulu21
   ];
 
   home.file = {};

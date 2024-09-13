@@ -55,8 +55,8 @@
       set -g @catppuccin_window_current_background "#313244"
       set -g @catppuccin_window_default_background "#313244"
 
-      set -g @catppuccin_pane_border_style "fg=#a6e3a1"
-      set -g @catppuccin_pane_active_border_style "fg=#89b4fa"
+      set -g @catppuccin_pane_border_style "fg=#89b4fa"
+      set -g @catppuccin_pane_active_border_style "fg=#a6e3a1"
       
       set -g @catppuccin_window_default_fill "number"
       set -g @catppuccin_window_default_text "#W"

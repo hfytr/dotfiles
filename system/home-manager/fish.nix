@@ -12,6 +12,7 @@
       tma = "tmux new -A -s";
       tmk = "tmux kill-server";
       fastfetch-tmux = "kitten icat --align=left ~/nixos/assets/maro.png| fastfetch --raw - --logo-width 20 --logo-height 12";
+      nixu = "set -x NIXPKGS_ALLOW_UNFREE 1";
     };
 
     functions.fish_greeting = "fastfetch-tmux";
@@ -31,6 +32,7 @@
       starship init fish | source
       enable_transience
       eval (ssh-agent -c) && ssh-add ~/.private/git
+      set -x RUST_BACKTRACE 1
       clear
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';

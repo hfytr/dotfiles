@@ -41,7 +41,6 @@
 
   # setup pipewire
   hardware.pulseaudio.enable = false;
-  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -89,6 +88,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     (callPackage ./sugar-candy.nix{}).sddm-sugar-candy-theme
+    alsa-utils
     gcc
     git
     gnumake
