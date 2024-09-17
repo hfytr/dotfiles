@@ -43,8 +43,6 @@ in {
     feh
     ffmpeg_7
     fzf
-    gcalcli
-    gitleaks
     hevea
     imagemagick
     just
@@ -57,15 +55,12 @@ in {
     nixpkgs-fmt
     nix-prefetch-github
     nsxiv
-    obsidian
-    ollama
     playerctl
-    pipes-rs
     (python312.withPackages (python-pkgs: with python-pkgs; [
      pyserial 
     ]))
-    prismlauncher
     ripgrep
+    # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     rrtui
     slurp
     stylua
@@ -74,16 +69,18 @@ in {
     unzip
     vial
     vlc
-    vscode
     webtorrent_desktop
     yt-dlp
     zathura
     zoxide
     zoom
-    zulu21
   ];
 
-  home.file = {};
+  home.pointerCursor = {
+    package = pkgs.rose-pine-cursor;
+    name = "rose-pine-cursor";
+    size = 32;
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

@@ -30,23 +30,6 @@ require("lazy").setup({
         lazy = false,
     },
     {
-        "rcarriga/nvim-notify",
-        config = function()
-            require("notify").setup({ background_colour = "#000000", render = "wrapped-compact" })
-        end,
-    },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            require("configs.noice")
-        end,
-    },
-    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             {
@@ -96,26 +79,11 @@ require("lazy").setup({
         opts = {},
     },
     {
-        "numToStr/Comment.nvim",
-        opts = {
-            toggler = { line = "<leader>/" },
-            opleader = { line = "<leader>/" },
-        },
-        lazy = false,
-    },
-    {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = true,
         config = function()
             require("configs.fzf-lua")
-        end,
-    },
-    {
-        "goolord/alpha-nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("alpha").setup(require("alpha.themes.startify").config)
         end,
     },
     { "echasnovski/mini.files", version = "*", opts = {} },
@@ -126,15 +94,6 @@ require("lazy").setup({
         config = function()
             require("configs.vimtex")
         end,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        lazy = false,
-        opts = {
-            enable = true,
-            max_lines = 4,
-            line_numbers = false,
-        },
     },
 }, {})
 

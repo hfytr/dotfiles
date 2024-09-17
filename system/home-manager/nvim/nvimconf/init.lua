@@ -48,10 +48,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         vim.api.nvim_win_set_cursor(0, { row, col })
     end,
 })
+vim.api.nvim_create_autocmd("BufWritePost", { command = "mkview" })
+vim.api.nvim_create_autocmd("BufReadPost", {
+    command = "silent! loadview",
+})
 
 require("mappings")
 
 vim.cmd("colorscheme catppuccin")
+vim.o.showmode = false
 vim.o.guicursor = "n-v-c:block,i-r-ci-cr-sm:block-blinkwait0-blinkon30-blinkoff30"
 vim.o.number = true
 vim.o.relativenumber = true

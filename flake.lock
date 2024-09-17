@@ -35,30 +35,6 @@
         "type": "github"
       }
     },
-    "kmonad": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "nix",
-        "lastModified": 1725345689,
-        "narHash": "sha256-vA6SmOA7LFIKjisA29d7crEN2AH1w6TPkt7N87VYo/8=",
-        "ref": "refs/heads/master",
-        "rev": "906b4e9620f3b1da7884787d43213c945affb786",
-        "revCount": 846,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/kmonad/kmonad?dir=nix"
-      },
-      "original": {
-        "dir": "nix",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/kmonad/kmonad?dir=nix"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1725634671,
@@ -79,7 +55,6 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
-        "kmonad": "kmonad",
         "nixpkgs": "nixpkgs"
       }
     }
