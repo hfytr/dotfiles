@@ -4,6 +4,7 @@ require("conform").setup({
         python = { "black", "isort" },
         cpp = { "clang_format" },
         rust = { "rustfmt" },
+        markdown = { "deno_fmt" },
     },
     format_on_save = {
         lsp_fallback = true,

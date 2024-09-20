@@ -14,9 +14,6 @@ require("lazy").setup({
     },
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            { "j-hui/fidget.nvim", opts = {} },
-        },
         lazy = false,
         config = function()
             require("configs.lspconfig")
@@ -94,6 +91,31 @@ require("lazy").setup({
         config = function()
             require("configs.vimtex")
         end,
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup({ background_colour = "#000000", render = "wrapped-compact" })
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("configs.noice")
+        end,
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
     },
 }, {})
 
