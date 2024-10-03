@@ -14,9 +14,6 @@ map({ "n", "v" }, "<PageDown>", function()
 end, opts)
 map("n", "n", "nzz", opts)
 map("n", "N", "Nzz", opts)
--- works better with wrapping
-map("n", "G", "G$", opts)
-map("n", "gg", "ggg0", opts)
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")

@@ -6,6 +6,8 @@ require("lazy").setup({
                 "lua",
                 "json",
                 "css",
+                "html",
+                "markdown",
                 "cpp",
                 "rust",
                 "python",
@@ -108,14 +110,6 @@ require("lazy").setup({
         config = function()
             require("configs.noice")
         end,
-    },
-    {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons",
-        },
     },
 }, {})
 

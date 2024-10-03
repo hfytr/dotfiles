@@ -3,15 +3,19 @@ require("conform").setup({
         lua = { "stylua" },
         python = { "black", "isort" },
         cpp = { "clang_format" },
-        rust = { "rustfmt" },
-        markdown = { "deno_fmt" },
+        rs = { "rustfmt" },
+        md = { "deno_fmt" },
+        tex = { "latexindent" },
     },
     format_on_save = {
         lsp_fallback = true,
         timeout_ms = 500,
     },
+    format = {
+        latexindent = {
+            inherit = false,
+            command = "latexindent",
+            args = { "-s", "-m", "-g=/dev/null", '-l="latexindent.yaml"', "$FILENAME", "-o", "$FILENAME" },
+        },
+    },
 })
-
-require("conform").formatters.shfmt = {
-    prepend_args = { "-style=file" },
-}

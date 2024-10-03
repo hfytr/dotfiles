@@ -10,6 +10,7 @@ in {
     ./ncmpcpp.nix
     ./neomutt.nix
     ./tmux.nix
+    ./ranger
     ./discord
     ./firefox
     ./hypr
@@ -17,6 +18,7 @@ in {
     ./kitty
     ./rofi
     ./wal
+    ./zathura
     ./nvim
     ./scripts
     ./wlogout
@@ -31,10 +33,7 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
   
   home.packages = with pkgs; [
-    arduino-ide
     bc
-    blender
-    btop
     cava
     curl
     dbus
@@ -55,17 +54,19 @@ in {
     nixpkgs-fmt
     nix-prefetch-github
     nsxiv
+    poppler_utils
     playerctl
+    pokeget-rs
     (python312.withPackages (python-pkgs: with python-pkgs; [
      pyserial 
     ]))
     ripgrep
-    # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     rrtui
     slurp
     stylua
     toybox
     telegram-desktop
+    ueberzugpp
     unzip
     vial
     vlc
@@ -96,6 +97,8 @@ in {
   };
 
   programs.home-manager.enable = true;
-  # programs.catppuccin.flavor = "mocha";
   programs.zoxide.enable = true;
+  programs.btop.enable = true;
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
 }

@@ -81,20 +81,23 @@
   ];
 
   programs.hyprland.enable = true;
-  services.displayManager.sddm = {
+  services.greetd = {
     enable = true;
-    theme = "sugar-candy";
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        user = "fbwdw";
+      };
+    };
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
-    (callPackage ./sugar-candy.nix{}).sddm-sugar-candy-theme
     alsa-utils
     gcc
     git
     gnumake
     libsForQt5.qt5.qtgraphicaleffects
     hyprland
-    sddm
     fish
   ];
   programs.steam.enable = true;

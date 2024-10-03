@@ -11,11 +11,14 @@
       ns = "NIXPKGS_ALLOW_UNFREE=1 nix-shell";
       tma = "tmux new -A -s";
       tmk = "tmux kill-server";
-      fastfetch-tmux = "kitten icat --align=left ~/nixos/assets/maro.png| fastfetch --raw - --logo-width 20 --logo-height 12";
+      fastfetch = "fastfetch --logo \"$(pokeget random --hide-name)\" --logo-type data";
       nixu = "set -x NIXPKGS_ALLOW_UNFREE 1";
+      "nv." = "nvim (fzf)";
+      nv = "nvim";
+      ra = "ranger";
     };
 
-    functions.fish_greeting = "fastfetch-tmux";
+    functions.fish_greeting = "fastfetch";
 
     shellAbbrs = {
       gca = "git commit --amend -m \"$(git log -1 --pretty=%B)\"";

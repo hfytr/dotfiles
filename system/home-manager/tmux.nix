@@ -12,6 +12,7 @@
       yank
       sensible
       vim-tmux-navigator
+      resurrect
     ];
 
     extraConfig = ''
@@ -29,6 +30,11 @@
       bind -n M-H select-pane -D
       bind -n M-A select-pane -U
       bind -n M-E select-pane -R
+
+      bind -n C-M-Y resize-pane -L 10
+      bind -n C-M-H resize-pane -D 10
+      bind -n C-M-A resize-pane -U 10
+      bind -n C-M-E resize-pane -R 10
 
       bind -n M-C new-window
       bind -n M-Z resize-pane -Z
