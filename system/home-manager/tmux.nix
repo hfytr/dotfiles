@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   programs.tmux = {
     enable = true;
-    catppuccin.enable = true;
 
     baseIndex = 1;
     prefix = "C-Space";

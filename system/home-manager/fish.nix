@@ -1,11 +1,10 @@
 { pkgs, lib, ... }: {
   programs.fish = {
     enable = true;
-    catppuccin.enable = true;
 
     shellAliases = {
-      lsv = "eza -a -l -b -h -m --group-directories-first --icons=auto --color=auto";
-      ls = "eza -a -b -h -m --group-directories-first --icons=auto --color=auto";
+      lsv = "eza -albhm --group-directories-first --icons=auto --color=auto";
+      ls = "eza -abhm --group-directories-first --icons=auto --color=auto";
       nixs = "sudo nixos-rebuild switch --flake /home/fbwdw/nixos/#fbwdwNixos";
       sshi = "eval (ssh-agent -c) && ssh-add ~/.private/git";
       ns = "NIXPKGS_ALLOW_UNFREE=1 nix-shell";
@@ -42,5 +41,4 @@
   };
 
   programs.bat.enable = true;
-  programs.bat.catppuccin.enable = true;
 }

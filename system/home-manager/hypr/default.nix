@@ -1,5 +1,4 @@
-{ pkgs, config, lib,... }:
-{
+{ pkgs, config, lib,... }: {
   home.packages = with pkgs; [
     swww
     hyprland
@@ -7,7 +6,7 @@
     grim
     slurp
     swappy
-    wl-clipboard
+    wl-clipboard-rs
     brightnessctl
   ];
 
