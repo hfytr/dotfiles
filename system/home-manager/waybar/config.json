@@ -6,7 +6,7 @@
   "reload-style-on-change": true,
   "margin": "10px 0px 0px 0px",
   "modules-left": ["hyprland/window", "hyprland/workspaces"],
-  "modules-right": ["backlight", "group/adjustable", "custom/weather"],
+  "modules-right": ["backlight", "group/adjustable"],
   "modules-center": ["network", "group/hardware", "clock"],
   "hyprland/workspaces": {
     "active-only": false,
@@ -32,11 +32,6 @@
       "transition-left-to-right": true
     },
     "modules": ["pulseaudio", "mpris"]
-  },
-  "custom/weather": {
-    "orientation": "horizontal",
-    "exec": "curl wttr.in/?format=\"%l:%20%t\"",
-    "interval": 10
   },
   "cpu": {
     "interval": 10,

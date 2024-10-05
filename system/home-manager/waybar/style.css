@@ -34,7 +34,7 @@ window#waybar {
 }
 #workspaces button.active, #workspaces button:hover { color: @color8; }
 
-#clock, #pulseaudio, #network, #battery, #tray, #mpris, #cpu, #memory, #temperature, #custom-weather, #window, #backlight {
+#clock, #pulseaudio, #network, #battery, #tray, #mpris, #cpu, #memory, #temperature, #window, #backlight {
     background-color: @bg;
     color: @color4;
     opacity: 1.0;
@@ -51,7 +51,7 @@ window#waybar {
 #mpris {
     padding-left: 0px;
     margin-left: 0px;
-    margin-right: 5px;
+    margin-right: 0px;
     padding-right: 0px;
 }
 #pulseaudio {
@@ -77,7 +77,6 @@ window#waybar {
     border-left-width: 0px;
 }
 #battery    { padding-right: 13px; }
-#custom-weather      { margin-right: 0px; }
 
 #window {
     margin-right: 0px;
