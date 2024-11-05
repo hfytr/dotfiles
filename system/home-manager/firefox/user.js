@@ -1,36 +1,60 @@
-user_pref("ultima.tabs.vertical", true);
-user_pref("ultima.tabs.xs", false);
-user_pref("ultima.tabs.s", false);
-user_pref("ultima.tabs.l", true);
-user_pref("ultima.tabs.autohide", true);
+/*color schemes*/
+user_pref("user.theme.dark.a", true); /*default dark mode*/
+user_pref("user.theme.dark.catppuccin", false);
+user_pref("user.theme.dark.catppuccin-mocha", false); /*by Draff*/
+user_pref("user.theme.dark.gruvbox", false);
+user_pref("user.theme.light.gruvbox", false);
+user_pref("user.theme.dark.midnight", false);
 
+/*titlebar*/
+user_pref("ultima.fix.gnome.titlebar", false);
+user_pref("ultima.fix.gnome.titlebar.small", false);
+user_pref("ultima.keep.titlebar", true);
+
+/*tabs*/
+user_pref("ultima.tabs.autohide", false);
+user_pref("ultima.tabs.disabled", false);
+
+/*sidebar*/
 user_pref("ultima.sidebar.autohide", false);
+user_pref("ultima.sidebery.autohide", true);
+user_pref("ultima.sidebar.hidden", false);
+user_pref("ultima.sidebar.longer", true);
 
-user_pref("ultima.xstyle.squared", false);
+/*extra theming*/
+user_pref("ultima.theme.extensions", true);
+user_pref("ultima.theme.color.swap", true);
+user_pref("ultima.theme.icons", true);
+
+/*url bar*/
+user_pref("ultima.urlbar.suggestions", true);
+user_pref("ultima.urlbar.centered", true);
+user_pref("ultima.urlbar.hidebuttons", false);
+user_pref("ultima.xstyle.urlbar", false);
+
+/*alternate styles*/
 user_pref("ultima.xstyle.containertabs.i", false);
 user_pref("ultima.xstyle.containertabs.ii", false);
 user_pref("ultima.xstyle.containertabs.iii", true);
-user_pref("ultima.xstyle.closetabsbutton", false);
+user_pref("ultima.xstyle.lwtheme", false);
+user_pref("ultima.xstyle.pinnedtabs.i", false);
+user_pref("ultima.xstyle.private", false);
+user_pref("ultima.xstyle.disable.alltabsbutton", true);
 
-user_pref("ultima.theme.extensions", true);
-
-user_pref("ultima.OS.kde", true);
-user_pref("ultima.OS.gnome", false);
-user_pref("ultima.OS.mac", false);
-user_pref("ultima.OS.linux", false);
-
+/*other*/
+user_pref("browser.aboutConfig.showWarning", false);
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("devtools.debugger.remote-enabled", true);
+user_pref("devtools.chrome.enabled", true);
+user_pref("devtools.debugger.prompt-connection", false);
 user_pref("svg.context-properties.content.enabled", true);
-user_pref("toolkit.tabbox.switchByScrolling", true);
+user_pref("toolkit.tabbox.switchByScrolling", false);
 
-//
-/* You may copy+paste this file and use it as it is.
- *
- * If you make changes to your about:config while the program is running, the
- * changes will be overwritten by the user.js when the application restarts.
- *
- * To make lasting changes to preferences, you will have to edit the user.js.
- */
+user_pref("sidebar.revamp", true);
+user_pref("sidebar.verticalTabs", true);
+user_pref("browser.tabs.hoverPreview.enabled", true);
+user_pref("browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled", false);
+user_pref("media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled", true);
 
 /****************************************************************************
  * Betterfox                                                                *
@@ -266,20 +290,3 @@ user_pref("browser.bookmarks.openInTabClosesMenu", false);
 user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
 user_pref("layout.word_select.eat_space_to_next_word", false);
-
-/****************************************************************************
- * START: MY OVERRIDES                                                      *
- ****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
-// visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
-// Enter your personal overrides below this line:
-
-/****************************************************************************
- * SECTION: SMOOTHFOX                                                       *
- ****************************************************************************/
-// visit https://github.com/yokoffing/Betterfox/blob/main/Smoothfox.js
-// Enter your scrolling overrides below this line:
-
-/****************************************************************************
- * END: BETTERFOX                                                           *
- ****************************************************************************/

@@ -1,9 +1,14 @@
 #!/usr/bin/env fish
-swww img "$argv" --resize=crop --transition-type outer --transition-pos 0.8,0.8 --transition-bezier .59,.15,.36,1
+swww img "$argv" --outputs eDP-1 --resize=crop --transition-type outer --transition-pos 0.8,0.8 --transition-bezier .59,.15,.36,1
+swww img "$argv" --outputs HDMI-A-1 --resize=crop --transition-type outer --transition-pos 0.2,0.8 --transition-bezier .59,.15,.36,1
 wal -i $argv
 
 killall waybar
 waybar -c ~/.config/waybar/config.json -s ~/.config/waybar/style.css &
+# set use_monitor (hyprctl monitors all | rg HDMI-A-1 | wc -l)
+# if test "$use_monitor" = "1"
+# else
+# end
 
 pywalfox update
 touch $HOME/.cache/rofi-current-wallpaper.rasi

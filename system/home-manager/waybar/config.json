@@ -2,12 +2,11 @@
   "layer": "top",
   "position": "top",
   "height": 24,
-  "width": 1900,
   "reload-style-on-change": true,
   "margin": "10px 0px 0px 0px",
   "modules-left": ["hyprland/window", "hyprland/workspaces"],
-  "modules-right": ["backlight", "group/adjustable"],
   "modules-center": ["network", "group/hardware", "clock"],
+  "modules-right": ["backlight", "pulseaudio"],
   "hyprland/workspaces": {
     "active-only": false,
     "all-outputs": false,
@@ -25,14 +24,6 @@
     "orientation": "inherit",
     "modules": ["cpu", "memory", "battery"]
   },
-  "group/adjustable": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    },
-    "modules": ["pulseaudio", "mpris"]
-  },
   "cpu": {
     "interval": 10,
     "format": "{usage}%  "
@@ -40,11 +31,6 @@
   "memory": {
     "interval": 10,
     "format": "{percentage}%  "
-  },
-  "mpris": {
-    "format-playing": "    {title}  ",
-    "format-paused": " 󰏤 {title}  ",
-    "format-stopped": "Nothing Playing"
   },
   "tray": {
     "spacing": 10

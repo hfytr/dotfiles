@@ -9,9 +9,9 @@ require("catppuccin").setup({
     },
     custom_highlights = function(colors)
         return {
-            LineNrAbove = { fg = colors.mauve, bold = true },
-            LineNrBelow = { fg = colors.mauve, bold = true },
-            LineNr = { fg = colors.rosewater, bold = true },
+            LineNrAbove = { fg = colors.mauve, bold = true, italic = true },
+            LineNrBelow = { fg = colors.mauve, bold = true, italic = true },
+            LineNr = { fg = colors.rosewater, bold = true, italic = true },
         }
     end,
 })

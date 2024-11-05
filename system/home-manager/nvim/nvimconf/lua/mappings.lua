@@ -22,5 +22,9 @@ map("n", "<leader>c", function()
     require("notify").dismiss()
 end, opts)
 
-map("n", "U", "<C-r>")
-map("n", "<leader>m", ":lua MiniFiles.open()<cr>", opts)
+map("n", "U", "<C-r>", opts)
+
+map("n", "<leader>r", function()
+    vim.cmd("term ranger")
+    vim.api.nvim_input("i")
+end, opts)

@@ -1,3 +1,4 @@
-#!/usr/bin/env fish
-set imgpath (nsxiv -tbor -s F ~/nixos/assets/wallpapers)
-singlebg "$imgpath"
+#!/bin/sh
+IMGPATH="$(nsxiv -tbor -s F ~/nixos/assets/wallpapers)"
+echo "Selected image: $IMGPATH"
+/home/fbwdw/.local/bin/singlebg "$IMGPATH"

@@ -48,6 +48,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         vim.api.nvim_win_set_cursor(0, { row, col })
     end,
 })
+vim.api.nvim_create_autocmd("TermClose", {
+    pattern = "term://*ranger",
+    callback = function()
+        vim.api.nvim_input("<CR>")
+    end,
+})
 vim.api.nvim_create_autocmd("BufWritePost", { command = "mkview" })
 vim.api.nvim_create_autocmd("BufReadPost", {
     command = "silent! loadview",

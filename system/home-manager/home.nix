@@ -34,7 +34,6 @@ in {
   
   home.packages = with pkgs; [
     bc
-    cava
     curl
     dbus
     eza
@@ -44,16 +43,14 @@ in {
     fzf
     hevea
     imagemagick
-    just
     jq
     texliveMedium
     libinput
+    lutris
     lldb
     mkpasswd
-    neomutt
-    nixpkgs-fmt
-    nix-prefetch-github
     nsxiv
+    nix-prefetch-github
     poppler_utils
     playerctl
     pokeget-rs
@@ -65,16 +62,15 @@ in {
     slurp
     stylua
     toybox
-    telegram-desktop
     ueberzugpp
     unzip
     vial
     vlc
     webtorrent_desktop
+    xdg-desktop-portal-hyprland
     yt-dlp
     zathura
     zoxide
-    zoom
   ];
 
   home.pointerCursor = {

@@ -85,7 +85,6 @@ require("lazy").setup({
             require("configs.fzf-lua")
         end,
     },
-    { "echasnovski/mini.files", version = "*", opts = {} },
     {
         "lervag/vimtex",
         lazy = false,
