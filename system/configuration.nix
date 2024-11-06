@@ -99,6 +99,8 @@
     libsForQt5.qt5.qtgraphicaleffects
     hyprland
     fish
+    wget
+    curl
   ];
   programs.steam.enable = true;
   # for Vial firmware

@@ -3,11 +3,11 @@ local opts = { noremap = true, silent = true }
 
 -- putting in on_attach doesnt work, idk why
 local fzflua = require("fzf-lua")
-map("n", "<leader>gr", fzflua.lsp_references, opts)
-map("n", "<leader>gs", fzflua.lsp_live_workspace_symbols, opts)
-map("n", "<leader>gi", fzflua.lsp_implementations, opts)
 map("n", "<leader>ca", fzflua.lsp_code_actions, opts)
 map("n", "<leader>rn", vim.lsp.buf.rename)
+map("n", "gr", fzflua.lsp_references, opts)
+map("n", "gs", fzflua.lsp_live_workspace_symbols, opts)
+map("n", "gi", fzflua.lsp_implementations, opts)
 
 map("n", "gd", vim.lsp.buf.definition, opts)
 map("n", "<C-o>", "<C-t>", opts)

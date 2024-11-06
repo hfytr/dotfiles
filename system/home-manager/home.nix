@@ -34,7 +34,6 @@ in {
   
   home.packages = with pkgs; [
     bc
-    curl
     dbus
     eza
     git
@@ -44,6 +43,7 @@ in {
     hevea
     imagemagick
     jq
+    killall
     texliveMedium
     libinput
     lutris
@@ -61,7 +61,6 @@ in {
     rrtui
     slurp
     stylua
-    toybox
     ueberzugpp
     unzip
     vial

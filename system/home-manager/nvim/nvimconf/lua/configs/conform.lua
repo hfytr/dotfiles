@@ -5,12 +5,8 @@ require("conform").setup({
         cpp = { "clang_format" },
         rs = { "rustfmt" },
         md = { "deno_fmt" },
-        tex = { "latexindent" },
     },
-    format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 500,
-    },
+    format_after_save = { lsp_format = "fallback" },
     format = {
         latexindent = {
             inherit = false,

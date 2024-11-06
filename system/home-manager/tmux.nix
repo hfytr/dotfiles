@@ -10,7 +10,6 @@
     plugins = with pkgs.tmuxPlugins; [
       yank
       sensible
-      vim-tmux-navigator
       resurrect
     ];
 
@@ -44,38 +43,36 @@
       bind -n M-S select-window -t 4
       bind -n M-G select-window -t 5
 
-      bind e capture-pane -S - -E - \; save-buffer /tmp/tmux_scrollback.txt \; run-shell "nvim /tmp/tmux_scrollback.txt"
+      bind e capture-pane -S - -E - \; save-buffer /tmp/tmux_scrollback.txt \; split-window 'nvim /tmp/tmux_scrollback.txt'
+      bind h copy-mode
 
       bind '"' split-window -h -c "#{pane_current_path}"
       bind % split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
+
+      set -ag status-right  "#{E:@catppuccin_status_directory}"
+      set -ag status-right  "#{E:@catppuccin_status_user}"
+      set -ag status-right  "#{E:@catppuccin_status_session}"
     '';
 
     catppuccin.extraConfig = ''
-      set -g @catppuccin_window_left_separator ""
-      set -g @catppuccin_window_right_separator " "
-      set -g @catppuccin_window_middle_separator " █"
+      set -g @catppuccin_window_status_style "rounded"
       set -g @catppuccin_window_number_position "right"
 
-      set -g @catppuccin_window_current_background "#313244"
-      set -g @catppuccin_window_default_background "#313244"
+      set -g @catppuccin_window_current_number_color "#a6e3a1"
+      set -g @catppuccin_window_current_number_color "#89b4fa"
 
       set -g @catppuccin_pane_border_style "fg=#89b4fa"
       set -g @catppuccin_pane_active_border_style "fg=#a6e3a1"
       
-      set -g @catppuccin_window_default_fill "number"
-      set -g @catppuccin_window_default_text "#W"
-      set -g @catppuccin_window_current_fill "number"
+      set -g @catppuccin_window_text "#W"
       set -g @catppuccin_window_current_text  "#W"
       
-      set -g @catppuccin_status_modules_right "directory user session"
-      set -g @catppuccin_status_left_separator  " "
-      set -g @catppuccin_status_right_separator ""
       set -g @catppuccin_status_fill "icon"
-      set -g @catppuccin_status_connect_separator "no"
+      set -g @catppuccin_status_connect_separator "yes"
 
       set -g @catppuccin_flavour "mocha"
-      set -g @catppuccin_status_background "default"
+      set -g @catppuccin_status_background "none"
     '';
   };
 }
