@@ -14,8 +14,7 @@
     ];
 
     extraConfig = ''
-      set -g default-terminal "tmux-256color"
-      set -ag terminal-overrides ",xterm-256color:RGB"
+      set -g default-terminal "xterm-256color"
       set -g mouse on
 
       set-option -g status-position top
@@ -49,30 +48,6 @@
       bind '"' split-window -h -c "#{pane_current_path}"
       bind % split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
-
-      set -ag status-right  "#{E:@catppuccin_status_directory}"
-      set -ag status-right  "#{E:@catppuccin_status_user}"
-      set -ag status-right  "#{E:@catppuccin_status_session}"
-    '';
-
-    catppuccin.extraConfig = ''
-      set -g @catppuccin_window_status_style "rounded"
-      set -g @catppuccin_window_number_position "right"
-
-      set -g @catppuccin_window_current_number_color "#a6e3a1"
-      set -g @catppuccin_window_current_number_color "#89b4fa"
-
-      set -g @catppuccin_pane_border_style "fg=#89b4fa"
-      set -g @catppuccin_pane_active_border_style "fg=#a6e3a1"
-      
-      set -g @catppuccin_window_text "#W"
-      set -g @catppuccin_window_current_text  "#W"
-      
-      set -g @catppuccin_status_fill "icon"
-      set -g @catppuccin_status_connect_separator "yes"
-
-      set -g @catppuccin_flavour "mocha"
-      set -g @catppuccin_status_background "none"
     '';
   };
 }

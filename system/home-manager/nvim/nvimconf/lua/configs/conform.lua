@@ -10,7 +10,7 @@ require("conform").setup({
     format = {
         latexindent = {
             inherit = false,
-            command = "latexindent",
+            command = "latexindent.pl",
             args = { "-s", "-m", "-g=/dev/null", '-l="latexindent.yaml"', "$FILENAME", "-o", "$FILENAME" },
         },
     },

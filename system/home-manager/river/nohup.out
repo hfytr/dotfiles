@@ -1,0 +1,6 @@
+[2024-11-27 12:22:06.296] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-27 12:22:06.300] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-27 12:22:06.300] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-27 12:22:06.430] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+error: failed to dispatch wayland events
+Gdk-Message: 12:25:26.204: Error reading events from display: Broken pipe

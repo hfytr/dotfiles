@@ -1,27 +1,23 @@
 { config, pkgs, lib, ... }:
-let rrtui = import ./rrtui.nix { inherit pkgs; };
+let
+  rrtui = import ./rrtui.nix { inherit pkgs; };
 in {
   imports = [
-    ./pywalfox.nix
+    ./bemenu.nix
     ./swaync.nix
     ./fish.nix
     ./fastfetch.nix
     ./starship.nix
     ./ncmpcpp.nix
-    ./neomutt.nix
     ./tmux.nix
     ./ranger
+    ./river
     ./discord
-    ./firefox
-    ./hypr
-    ./waybar
-    ./kitty
+    ./waybar.nix
+    ./kitty.nix
     ./rofi
-    ./wal
-    ./zathura
+    ./zathura.nix
     ./nvim
-    ./scripts
-    ./wlogout
   ];
 
   home.username = "fbwdw";
@@ -33,7 +29,9 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
   
   home.packages = with pkgs; [
+    arduino-ide
     bc
+    brave
     dbus
     eza
     git
@@ -41,15 +39,15 @@ in {
     ffmpeg_7
     fzf
     hevea
-    imagemagick
-    jq
-    killall
-    texliveMedium
+    (texlive.withPackages (ps: with ps; [
+      scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
+    ]))
+    perl538Packages.LatexIndent
     libinput
     lutris
     lldb
     mkpasswd
-    nsxiv
+    minicom
     nix-prefetch-github
     poppler_utils
     playerctl
@@ -61,27 +59,19 @@ in {
     rrtui
     slurp
     stylua
-    ueberzugpp
     unzip
     vial
     vlc
-    webtorrent_desktop
-    xdg-desktop-portal-hyprland
     yt-dlp
     zathura
     zoxide
   ];
 
-  home.pointerCursor = {
-    package = pkgs.rose-pine-cursor;
-    name = "rose-pine-cursor";
-    size = 32;
-  };
-
   home.sessionVariables = {
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
     PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:/etc/profiles/per-user/fbwdw/bin:/run/current-system/sw";
   };
 
   programs = {
@@ -94,6 +84,4 @@ in {
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;
   programs.btop.enable = true;
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
 }

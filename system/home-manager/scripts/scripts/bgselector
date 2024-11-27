@@ -1,4 +1,0 @@
-#!/bin/sh
-IMGPATH="$(nsxiv -tbor -s F ~/nixos/assets/wallpapers)"
-echo "Selected image: $IMGPATH"
-/home/fbwdw/.local/bin/singlebg "$IMGPATH"

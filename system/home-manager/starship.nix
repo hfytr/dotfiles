@@ -1,6 +1,5 @@
 { pkgs, lib, ... }: {
   programs.starship.enable = true;
-  programs.starship.catppuccin.enable = true;
   programs.starship.settings = {
     format = ''
       [╭─](red)[\($username@$hostname\)](blue bold) $directory$package$git_branch$git_status$git_state$cmd_duration

@@ -2,8 +2,6 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local eopts = { noremap = true, expr = true, silent = true }
 
-map("n", "$", "g$")
-map("n", "0", "g0")
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", eopts)
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", eopts)
 map({ "n", "v" }, "<PageUp>", function()
@@ -12,6 +10,7 @@ end, opts)
 map({ "n", "v" }, "<PageDown>", function()
     vim.cmd("normal! " .. tostring(math.floor(vim.api.nvim_win_get_height(0) / 2)) .. "gjzz")
 end, opts)
+
 map("n", "n", "nzz", opts)
 map("n", "N", "Nzz", opts)
 
@@ -28,3 +27,12 @@ map("n", "<leader>r", function()
     vim.cmd("term ranger")
     vim.api.nvim_input("i")
 end, opts)
+--[[
+:set relativenumber
+:set foldmethod=indent
+:nnoremap <PageUp> :execute 'normal! ' . (winheight(0) / 2) . 'gkzz'<CR>
+:vnoremap <PageUp> :execute 'normal! ' . (winheight(0) / 2) . 'gkzz'<CR>
+:nnoremap <PageDown> :execute 'normal! ' . (winheight(0) / 2) . 'gjzz'<CR>
+:vnoremap <PageDown> :execute 'normal! ' . (winheight(0) / 2) . 'gjzz'<CR>
+]]
+--

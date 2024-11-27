@@ -60,7 +60,7 @@
     hashedPassword = "$6$ok5nScrid37eI81o$pqX1d9LqDoZYKMCr9VKnLh5MtY/F0zypq5E8oaSQ6meEaoAAwtB338TynnC1JYZHtulTph4xMYY/QG/BG14dj1";
     isNormalUser = true;
     description = "Archim Jhunjhunwala";
-    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "input" "uinput" "tty"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "input" "uinput" "tty" "dialout"];
   };
 
   # disable sudo for fbwdw
@@ -80,12 +80,25 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  programs.hyprland.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    config = {common = {default = "wlr";};};
+    wlr.enable = true;
+    wlr.settings.screencast = {
+      output_name = "DP-2";
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+    };
+  };
+
+  # programs.hyprland.enable = true;
+  programs.river.enable = true;
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --time -c river";
         user = "fbwdw";
       };
     };
@@ -97,12 +110,10 @@
     git
     gnumake
     libsForQt5.qt5.qtgraphicaleffects
-    hyprland
     fish
     wget
     curl
   ];
-  programs.steam.enable = true;
   # for Vial firmware
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
@@ -114,5 +125,19 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
+  };
+
+  stylix.enable = true;
+  stylix.image = config.lib.stylix.pixel "base00";
+  stylix.autoEnable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.fonts.monospace = {
+    package = pkgs.jetbrains-mono;
+    name = "JetBrainsMono NFM Thin";
+  };
+  stylix.fonts = {
+    serif = config.stylix.fonts.monospace;
+    sansSerif = config.stylix.fonts.monospace;
+    emoji = config.stylix.fonts.monospace;
   };
 }
