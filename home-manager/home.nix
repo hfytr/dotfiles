@@ -15,7 +15,6 @@ in {
     ./discord
     ./waybar.nix
     ./kitty.nix
-    ./rofi
     ./zathura.nix
     ./nvim
   ];
