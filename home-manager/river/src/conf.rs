@@ -88,6 +88,7 @@ fn main() {
     riverctl("map normal Super H send-layout-cmd wideriver '--count -1'");
     riverctl("map normal Super A send-layout-cmd wideriver '--count +1'");
     riverctl("map normal Alt Return send-layout-cmd wideriver '--layout-toggle'");
+    riverctl("map normal Alt Tab focus-previous-tags");
     riverctl("map normal Super Z zoom");
     riverctl(&format!("map normal Super P set-view-tags {}", u32::MAX));
 

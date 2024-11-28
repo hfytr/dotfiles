@@ -3,7 +3,6 @@
     enable = true;
 
     shellAliases = {
-      lsv = "eza -albhm --group-directories-first --icons=auto --color=auto";
       ls = "eza -abhm --group-directories-first --icons=auto --color=auto";
       nixs = "sudo nixos-rebuild switch --flake /home/fbwdw/nixos/#fbwdwNixos";
       sshi = "eval (ssh-agent -c) && ssh-add ~/.private/git";
@@ -21,6 +20,7 @@
 
     shellAbbrs = {
       gca = "git commit --amend -m \"$(git log -1 --pretty=%B)\"";
+      lsr = "eza -abhmT --group-directories-first --icons=auto --color=auto -L";
     };
 
     interactiveShellInit = ''

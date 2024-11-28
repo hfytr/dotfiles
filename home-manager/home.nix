@@ -4,19 +4,19 @@ let
 in {
   imports = [
     ./bemenu.nix
-    ./swaync.nix
+    ./discord.nix
     ./fish.nix
     ./fastfetch.nix
-    ./starship.nix
-    ./ncmpcpp.nix
-    ./tmux.nix
-    ./ranger
-    ./river
-    ./discord.nix
-    ./waybar.nix
     ./kitty.nix
-    ./zathura.nix
+    ./ncmpcpp.nix
     ./nvim
+    ./river
+    ./starship.nix
+    ./swaync.nix
+    ./tmux.nix
+    ./waybar.nix
+    ./yazi.nix
+    ./zathura.nix
   ];
 
   home.username = "fbwdw";

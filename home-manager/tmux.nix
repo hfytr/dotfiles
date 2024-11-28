@@ -16,6 +16,9 @@
     extraConfig = ''
       set -g default-terminal "xterm-256color"
       set -g mouse on
+      set -g allow-passthrough all
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
 
       set-option -g status-position top
 
