@@ -7,12 +7,5 @@ edition = "2021"
 name = "riverConf"
 path = "src/conf.rs"
 
-[[bin]]
-name = "waybarModule"
-path = "src/waybar_module.rs"
-
 [dependencies]
 shell-words = "1.1.0"
-wayland-backend = "0.3.7"
-wayland-client = "0.31.7"
-wayland-scanner = "0.31.5"

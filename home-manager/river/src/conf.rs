@@ -46,15 +46,15 @@ fn exec(cmd: &str, disown: bool) {
 
 fn main() {
     riverctl("keyboard-layout us");
-    riverctl("border-width 3");
+    riverctl("default-layout wideriver");
     riverctl("focus-follows-cursor always");
     riverctl("hide-cursor timeout 10000");
     riverctl("hide-cursor when-typing enabled");
     riverctl("set-cursor-warp on-focus-change");
     let colors = read_stylix();
-    riverctl(&format!("border-color-focused 0x{}", colors[5]));
-    riverctl(&format!("border-color-unfocused 0x{}", colors[3]));
-    riverctl(&format!("border-color-urgent 0x{}", colors[8]));
+    // riverctl(&format!("border-color-focused 0x{}", colors[5]));
+    // riverctl(&format!("border-color-unfocused 0x{}", colors[3]));
+    // riverctl(&format!("border-color-urgent 0x{}", colors[8]));
     riverctl(&format!("background-color 0x{}", colors[0]));
 
     riverctl("map normal Super Q close");
@@ -77,16 +77,17 @@ fn main() {
     riverctl("map normal Super+Shift E spawn wlogout");
     riverctl("map normal None Print spawn 'grim -g \"$(slurp)\" $HOME/media/screenshots/$(date +'%s_grim.png')'");
     riverctl(
-        "map normal Super Return spawn 'rofi -show drun -theme \"~/.config/rofi/launcherstyle.rasi\"'",
+        "map normal Super Return spawn bemenu-run",
     );
 
     for (direction, key) in DIRECTIONS {
         riverctl(&format!("map normal Alt {key} focus-view {direction}"));
     }
-    riverctl("map normal Super Y send-layout-cmd rivertile 'main-ratio -0.07'");
-    riverctl("map normal Super E send-layout-cmd rivertile 'main-ratio +0.07'");
-    riverctl("map normal Super A send-layout-cmd rivertile 'main-count +1'");
-    riverctl("map normal Super H send-layout-cmd rivertile 'main-count -1'");
+    riverctl("map normal Super Y send-layout-cmd wideriver '--ratio -0.07'");
+    riverctl("map normal Super E send-layout-cmd wideriver '--ratio +0.07'");
+    riverctl("map normal Super H send-layout-cmd wideriver '--count -1'");
+    riverctl("map normal Super A send-layout-cmd wideriver '--count +1'");
+    riverctl("map normal Alt Return send-layout-cmd wideriver '--layout-toggle'");
     riverctl("map normal Super Z zoom");
     riverctl(&format!("map normal Super P set-view-tags {}", u32::MAX));
 
@@ -116,9 +117,9 @@ fn main() {
     riverctl("map normal Alt Space focus-output next");
     riverctl("map normal Super Space send-to-output next");
 
+    riverctl("rule-add ssd");
     riverctl("rule-add -title 'waybar' csd");
-    riverctl(&format!("rule-add -title 'discord' tags {}", 1_u32 << 3));
+    riverctl(&format!("rule-add -title 'discord' tags {}", 1_u32 << 6));
 
-    riverctl("default-layout rivertile");
     exec("discord", true);
 }

@@ -12,7 +12,7 @@ in {
     ./tmux.nix
     ./ranger
     ./river
-    ./discord
+    ./discord.nix
     ./waybar.nix
     ./kitty.nix
     ./zathura.nix

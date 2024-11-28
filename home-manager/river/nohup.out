@@ -1,6 +1,10 @@
-[2024-11-27 12:22:06.296] [info] Using configuration file /home/fbwdw/.config/waybar/config
-[2024-11-27 12:22:06.300] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
-[2024-11-27 12:22:06.300] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
-[2024-11-27 12:22:06.430] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
-error: failed to dispatch wayland events
-Gdk-Message: 12:25:26.204: Error reading events from display: Broken pipe
+[2024-11-28 12:02:47.301] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-28 12:02:47.302] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-28 12:02:47.302] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-28 12:02:47.543] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-28 12:02:47.544] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+[2024-11-28 12:03:41.012] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-28 12:03:41.014] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-28 12:03:41.014] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-28 12:03:41.246] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-28 12:03:41.246] [info] Bar configured (width: 38, height: 1200) for output: eDP-1

@@ -4,9 +4,7 @@
     XDG_RUNTIME_DIR = "/run/user/$UID";
   };
 
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -74,7 +72,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11";
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -139,5 +137,11 @@
     serif = config.stylix.fonts.monospace;
     sansSerif = config.stylix.fonts.monospace;
     emoji = config.stylix.fonts.monospace;
+    sizes = {
+      applications = 7;
+      desktop = 7;
+      popups = 7;
+      terminal = 7;
+    };
   };
 }

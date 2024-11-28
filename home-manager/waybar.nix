@@ -1,5 +1,5 @@
 { pkgs, config, lib, ... }:
-let colors = config.lib.stylix.colors;
+let colors = config.lib.stylix.colors.withHashtag;
 in {
   stylix.targets.waybar.enable = false; # 
   programs.waybar.enable = true;
@@ -14,7 +14,7 @@ in {
     gtk-layer-shell = true;
 
     modules-left = [ "clock" ];
-    modules-center = [ "river/tags" ];
+    modules-center = [ "river/tags" "river/layout" ];
     modules-right = [
       "cpu"
       "memory"
@@ -39,6 +39,7 @@ in {
     };
 
     "river/tags" = { num-tags = 10; };
+    "river/layout" = { format = "{}"; };
 
     "cpu" = {
       format = "CPU\n{usage}%";
@@ -124,8 +125,8 @@ in {
   };
 
   programs.waybar.style = ''
-    @define-color background #${colors.base00};
-    @define-color foreground #${colors.base05};
+    @define-color background ${colors.base00};
+    @define-color foreground ${colors.base05};
 
     * {
       font-family: "JetBrains Mono NFM";

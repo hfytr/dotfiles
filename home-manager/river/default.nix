@@ -46,8 +46,12 @@ in {
   '';
   home.file.".config/river/init" = {
     text = ''
-      nohup ${pkgs.river}/bin/rivertile -view-padding 0 -outer-padding 0 &
+      ps aux | rg 'wideriver' | awk '{print $2}' | xargs kill
+      ps aux | rg 'waybar' | awk '{print $2}' | xargs kill
+
+      nohup ${pkgs.wideriver}/bin/wideriver --layout wide --layout-alt left --ratio-master 0.6 --count-wide-left 0 --border-width 3 --border-color-focused 0x${colors.base05} --border-color-unfocused 0x${colors.base03} &
       nohup waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css &      
+
       ${riverConf}/bin/riverConf
     '';
     executable = true;
