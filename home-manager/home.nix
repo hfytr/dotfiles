@@ -61,6 +61,8 @@ in {
     unzip
     vial
     vlc
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
     yt-dlp
     zathura
     zoxide

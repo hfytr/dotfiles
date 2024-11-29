@@ -11,10 +11,10 @@ in {
     margin-left = 0;
     margin-right = 0;
     spacing = 0;
-    gtk-layer-shell = true;
+    gtk-layer-shell = false;
 
     modules-left = [ "clock" ];
-    modules-center = [ "river/tags" "river/layout" ];
+    modules-center = [ "river/tags" ];
     modules-right = [
       "cpu"
       "memory"
@@ -39,7 +39,6 @@ in {
     };
 
     "river/tags" = { num-tags = 10; };
-    "river/layout" = { format = "{}"; };
 
     "cpu" = {
       format = "CPU\n{usage}%";
@@ -87,27 +86,6 @@ in {
       tooltip-format = "{icon} {desc} {volume}%";
     };
 
-    "network#wlo1" = {
-      interval = 1;
-      interface = "wlo1";
-      format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
-      format-wifi = "{icon}";
-      format-disconnected = "";
-      on-click = "nm-connection-editor";
-      tooltip = true;
-      tooltip-format = "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}";
-    };
-
-    "network#eno1" = {
-      interval = 1;
-      interface = "eno1";
-      format-icons = [ "󰈀" ];
-      format-disconnected = "";
-      on-click = "";
-      tooltip = true;
-      tooltip-format = "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}";
-    };
-
     "battery" = {
       states = {
         warning = 20;
@@ -127,6 +105,7 @@ in {
   programs.waybar.style = ''
     @define-color background ${colors.base00};
     @define-color foreground ${colors.base05};
+    @define-color dull ${colors.base03};
 
     * {
       font-family: "JetBrains Mono NFM";
@@ -148,12 +127,9 @@ in {
 
     #tags button {
       background-color: transparent;
-      color: @foreground;
+      color: @dull;
       padding: 1px 2px;
-      margin-top: 3px;
-      margin-bottom: 3px;
-      margin-left: 3px;
-      margin-right: 3px;
+      margin: 3px 3px;
       transition: all 0.3s ease;
     }
 
@@ -161,13 +137,13 @@ in {
       box-shadow: inherit;
       text-shadow: inherit;
       background: transparent;
-      border: 1px solid @foreground;
       transition: all 0.3s ease;
+      color: @foreground;
     }
 
     #tags button.focused,
     #tags button.active {
-      border: 1px solid @foreground;
+      color: @foreground;
       transition: all 0.3s ease;
       animation: colored-gradient 10s ease infinite;
     }

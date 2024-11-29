@@ -61,7 +61,6 @@
     extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "input" "uinput" "tty" "dialout"];
   };
 
-  # disable sudo for fbwdw
   security.sudo.extraRules = [{
     users = [ "fbwdw" ];
     commands = [{

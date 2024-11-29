@@ -118,8 +118,6 @@ fn main() {
     riverctl("map normal Alt Space focus-output next");
     riverctl("map normal Super Space send-to-output next");
 
-    riverctl("rule-add ssd");
-    riverctl("rule-add -title 'waybar' csd");
     riverctl(&format!("rule-add -title 'discord' tags {}", 1_u32 << 6));
 
     exec("discord", true);
