@@ -56,15 +56,15 @@ require("lazy").setup({
             require("configs.lualine")
         end,
     },
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        transparent_background = true,
-        config = function()
-            require("configs.catppuccin")
-        end,
-    },
+    --{
+    --    "catppuccin/nvim",
+    --    name = "catppuccin",
+    --    priority = 1000,
+    --    transparent_background = true,
+    --    config = function()
+    --        require("configs.catppuccin")
+    --    end,
+    --},
     { "windwp/nvim-autopairs", opts = {} },
     {
         "saccarosium/neomarks",
@@ -110,6 +110,13 @@ require("lazy").setup({
             require("configs.noice")
         end,
     },
+    {
+        "RRethy/base16-nvim",
+        priority = 1000,
+        config = function()
+            require("base16")
+        end
+    }
 }, {})
 
 require("configs.quickfix")

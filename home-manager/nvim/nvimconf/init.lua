@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 require("mappings")
 
-vim.cmd("colorscheme catppuccin")
 vim.o.showmode = false
 vim.o.guicursor = "n-v-c:block,i-r-ci-cr-sm:block-blinkwait0-blinkon30-blinkoff30"
 vim.o.number = true

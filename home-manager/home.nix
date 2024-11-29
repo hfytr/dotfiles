@@ -57,7 +57,6 @@ in {
     ripgrep
     rrtui
     slurp
-    stylua
     unzip
     vial
     vlc

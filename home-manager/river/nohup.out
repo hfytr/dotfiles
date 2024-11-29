@@ -1,0 +1,167 @@
+I [16:01:19] --layout                       wide
+I [16:01:19] --layout-alt                   left
+I [16:01:19] --stack                        dwindle
+I [16:01:19] --count-master                 1
+I [16:01:19] --ratio-master                 0.6
+I [16:01:19] --count-wide-left              0
+I [16:01:19] --ratio-wide                   0.35
+I [16:01:19] --no-smart-gaps
+I [16:01:19] --inner-gaps                   0
+I [16:01:19] --outer-gaps                   0
+I [16:01:19] --border-width                 3
+I [16:01:19] --border-width-monocle         0
+I [16:01:19] --border-width-smart-gaps      0
+I [16:01:19] --border-color-focused         0xd5c4a1
+I [16:01:19] --border-color-focused-monocle 0x586e75
+I [16:01:19] --border-color-unfocused       0x665c54
+I [16:01:19] --log-threshold                info
+I [16:01:19] wideriver started
+[2024-11-29 16:01:19.172] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:01:19.173] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:01:19.173] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:01:19.416] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:01:19.416] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:02:43] wideriver done
+I [16:02:43] --layout                       wide
+I [16:02:43] --layout-alt                   left
+I [16:02:43] --stack                        dwindle
+I [16:02:43] --count-master                 1
+I [16:02:43] --ratio-master                 0.6
+I [16:02:43] --count-wide-left              0
+I [16:02:43] --ratio-wide                   0.35
+I [16:02:43] --no-smart-gaps
+I [16:02:43] --inner-gaps                   0
+I [16:02:43] --outer-gaps                   0
+I [16:02:43] --border-width                 3
+I [16:02:43] --border-width-monocle         0
+I [16:02:43] --border-width-smart-gaps      0
+I [16:02:43] --border-color-focused         0xd5c4a1
+I [16:02:43] --border-color-focused-monocle 0x586e75
+I [16:02:43] --border-color-unfocused       0x665c54
+I [16:02:43] --log-threshold                info
+I [16:02:43] wideriver started
+[2024-11-29 16:02:43.553] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:02:43.555] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:02:43.555] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:02:43.793] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:02:43.793] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:08:05] wideriver done
+I [16:08:05] --layout                       wide
+I [16:08:05] --layout-alt                   left
+I [16:08:05] --stack                        dwindle
+I [16:08:05] --count-master                 1
+I [16:08:05] --ratio-master                 0.6
+I [16:08:05] --count-wide-left              0
+I [16:08:05] --ratio-wide                   0.35
+I [16:08:05] --no-smart-gaps
+I [16:08:05] --inner-gaps                   0
+I [16:08:05] --outer-gaps                   0
+I [16:08:05] --border-width                 3
+I [16:08:05] --border-width-monocle         0
+I [16:08:05] --border-width-smart-gaps      0
+I [16:08:05] --border-color-focused         0xd5c4a1
+I [16:08:05] --border-color-focused-monocle 0x586e75
+I [16:08:05] --border-color-unfocused       0x665c54
+I [16:08:05] --log-threshold                info
+I [16:08:05] wideriver started
+[2024-11-29 16:08:05.735] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:08:05.737] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:08:05.737] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:08:05.982] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:08:05.982] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:10:42] wideriver done
+I [16:10:42] --layout                       wide
+I [16:10:42] --layout-alt                   left
+I [16:10:42] --stack                        dwindle
+I [16:10:42] --count-master                 1
+I [16:10:42] --ratio-master                 0.6
+I [16:10:42] --count-wide-left              0
+I [16:10:42] --ratio-wide                   0.35
+I [16:10:42] --no-smart-gaps
+I [16:10:42] --inner-gaps                   0
+I [16:10:42] --outer-gaps                   0
+I [16:10:42] --border-width                 3
+I [16:10:42] --border-width-monocle         0
+I [16:10:42] --border-width-smart-gaps      0
+I [16:10:42] --border-color-focused         0xd5c4a1
+I [16:10:42] --border-color-focused-monocle 0x586e75
+I [16:10:42] --border-color-unfocused       0x665c54
+I [16:10:42] --log-threshold                info
+I [16:10:42] wideriver started
+[2024-11-29 16:10:42.578] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:10:42.580] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:10:42.580] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:10:42.813] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:10:42.813] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:10:48] wideriver done
+I [16:10:48] --layout                       wide
+I [16:10:48] --layout-alt                   left
+I [16:10:48] --stack                        dwindle
+I [16:10:48] --count-master                 1
+I [16:10:48] --ratio-master                 0.6
+I [16:10:48] --count-wide-left              0
+I [16:10:48] --ratio-wide                   0.35
+I [16:10:48] --no-smart-gaps
+I [16:10:48] --inner-gaps                   0
+I [16:10:48] --outer-gaps                   0
+I [16:10:48] --border-width                 3
+I [16:10:48] --border-width-monocle         0
+I [16:10:48] --border-width-smart-gaps      0
+I [16:10:48] --border-color-focused         0xd5c4a1
+I [16:10:48] --border-color-focused-monocle 0x586e75
+I [16:10:48] --border-color-unfocused       0x665c54
+I [16:10:48] --log-threshold                info
+I [16:10:48] wideriver started
+[2024-11-29 16:10:48.845] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:10:48.847] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:10:48.847] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:10:49.087] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:10:49.087] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:12:22] wideriver done
+I [16:12:22] --layout                       wide
+I [16:12:22] --layout-alt                   left
+I [16:12:22] --stack                        dwindle
+I [16:12:22] --count-master                 1
+I [16:12:22] --ratio-master                 0.6
+I [16:12:22] --count-wide-left              0
+I [16:12:22] --ratio-wide                   0.35
+I [16:12:22] --no-smart-gaps
+I [16:12:22] --inner-gaps                   0
+I [16:12:22] --outer-gaps                   0
+I [16:12:22] --border-width                 3
+I [16:12:22] --border-width-monocle         0
+I [16:12:22] --border-width-smart-gaps      0
+I [16:12:22] --border-color-focused         0xd5c4a1
+I [16:12:22] --border-color-focused-monocle 0x586e75
+I [16:12:22] --border-color-unfocused       0x665c54
+I [16:12:22] --log-threshold                info
+I [16:12:22] wideriver started
+[2024-11-29 16:12:22.721] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:12:22.722] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:12:22.723] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:12:22.962] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:12:22.962] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [16:14:46] wideriver done
+I [16:14:46] --layout                       wide
+I [16:14:46] --layout-alt                   left
+I [16:14:46] --stack                        dwindle
+I [16:14:46] --count-master                 1
+I [16:14:46] --ratio-master                 0.6
+I [16:14:46] --count-wide-left              0
+I [16:14:46] --ratio-wide                   0.35
+I [16:14:46] --no-smart-gaps
+I [16:14:46] --inner-gaps                   0
+I [16:14:46] --outer-gaps                   0
+I [16:14:46] --border-width                 3
+I [16:14:46] --border-width-monocle         0
+I [16:14:46] --border-width-smart-gaps      0
+I [16:14:46] --border-color-focused         0xd5c4a1
+I [16:14:46] --border-color-focused-monocle 0x586e75
+I [16:14:46] --border-color-unfocused       0x665c54
+I [16:14:46] --log-threshold                info
+I [16:14:46] wideriver started
+[2024-11-29 16:14:46.691] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2024-11-29 16:14:46.694] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-29 16:14:46.694] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2024-11-29 16:14:46.946] [info] Bar configured (width: 38, height: 1440) for output: HDMI-A-1
+[2024-11-29 16:14:46.946] [info] Bar configured (width: 38, height: 1200) for output: eDP-1

@@ -25,7 +25,6 @@
       show_numbers="relative_absolute",
       show_motion = true
     })
-    require("eza-preview"):setup()
   '';
 
   programs.yazi.plugins = {

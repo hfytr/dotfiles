@@ -52,13 +52,10 @@ fn main() {
     riverctl("hide-cursor when-typing enabled");
     riverctl("set-cursor-warp on-focus-change");
     let colors = read_stylix();
-    // riverctl(&format!("border-color-focused 0x{}", colors[5]));
-    // riverctl(&format!("border-color-unfocused 0x{}", colors[3]));
-    // riverctl(&format!("border-color-urgent 0x{}", colors[8]));
     riverctl(&format!("background-color 0x{}", colors[0]));
 
     riverctl("map normal Super Q close");
-    riverctl("map normal Super F toggle-float");
+    riverctl("map normal Super V toggle-float");
     riverctl("map normal Super M toggle-fullscreen");
 
     riverctl("map normal None XF86MonBrightnessUp spawn 'brightnessctl set +10%'");
@@ -74,11 +71,30 @@ fn main() {
     riverctl("map normal Alt P spawn 'playerctl play-pause'");
     riverctl("map normal Super T spawn kitty");
     riverctl("map normal Super B spawn brave");
+    riverctl("map normal Super F spawn 'kitty yazi'");
     riverctl("map normal Super+Shift E spawn wlogout");
     riverctl("map normal None Print spawn 'grim -g \"$(slurp)\" $HOME/media/screenshots/$(date +'%s_grim.png')'");
-    riverctl(
-        "map normal Super Return spawn bemenu-run",
-    );
+    // BEMENU_OPTS set by hm doesn't work with riverctl spawn
+    riverctl(&format!(
+        "map normal Super Return spawn \"bemenu-run \
+        --tb '#{}' --nb '#{}' --fb '#{}' --hb '#{}' --sb '#{}' --scb '#{}' --hf '#{}' --sf '#{}' --tf '#{}' --ff '#{}' --nf '#{}' --scf '#{}' --ab '#{}' --af '#{}' \
+        --fn 'JetBrainsMono NFM Thin 7' \
+        -i -l 15 -p 'open'\"",
+        colors[1],
+        colors[1],
+        colors[1],
+        colors[3],
+        colors[3],
+        colors[1],
+        colors[10],
+        colors[11],
+        colors[5],
+        colors[5],
+        colors[5],
+        colors[3],
+        colors[1],
+        colors[5]
+    ));
 
     for (direction, key) in DIRECTIONS {
         riverctl(&format!("map normal Alt {key} focus-view {direction}"));
