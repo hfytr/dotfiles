@@ -9,4 +9,4 @@ map("n", "<leader>sr", fzflua.resume)
 map("n", "<leader>sw", fzflua.grep_cword)
 map("n", "<leader>sW", fzflua.grep_cWORD)
 
-fzflua.setup({ "telescope", winopts = { preview = { default = "bat" } } })
+fzflua.setup({ "default", winopts = { preview = { default = "bat" } } })

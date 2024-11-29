@@ -22,5 +22,12 @@ in {
         base08 = '${colors.base08}', base09 = '${colors.base09}', base0A = '${colors.base0A}', base0B = '${colors.base0B}',
         base0C = '${colors.base0C}', base0D = '${colors.base0D}', base0E = '${colors.base0E}', base0F = '${colors.base0F}',
     })
+
+    vim.cmd [[
+      highlight Normal guibg=none
+      highlight NonText guibg=none
+      highlight Normal ctermbg=none
+      highlight NonText ctermbg=none
+    ]]
   '';
 }
