@@ -127,7 +127,7 @@
   stylix.enable = true;
   stylix.image = config.lib.stylix.pixel "base00";
   stylix.autoEnable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   stylix.fonts.monospace = {
     package = pkgs.jetbrains-mono;
     name = "JetBrainsMono NFM Thin";

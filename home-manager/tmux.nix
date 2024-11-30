@@ -14,8 +14,8 @@
     ];
 
     extraConfig = ''
-      set -g default-terminal "xterm-256color"
-      set -g terminal-overrides ",xterm-kitty:Tc"
+      set -g default-terminal "screen-256color"
+      set -as terminal-features ",xterm-256color:RGB"
       set -g mouse on
       set -g allow-passthrough all
       set -ga update-environment TERM
