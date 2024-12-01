@@ -48,6 +48,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --        vim.api.nvim_win_set_cursor(0, { row, col })
 --    end,
 --})
+
 vim.api.nvim_create_autocmd("TermClose", {
     pattern = "term://*yazi",
     callback = function()
@@ -57,6 +58,17 @@ vim.api.nvim_create_autocmd("TermClose", {
 vim.api.nvim_create_autocmd("BufWritePost", { command = "mkview" })
 vim.api.nvim_create_autocmd("BufReadPost", {
     command = "silent! loadview",
+})
+
+local shiftwidths = {
+    haskell = 2,
+    nix = 2,
+}
+local default_shiftwidth = 4
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        vim.bo.shiftwidth = shiftwidths[vim.bo.filetype] or default_shiftwidth
+    end
 })
 
 require("mappings")

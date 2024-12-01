@@ -15,6 +15,10 @@ in {
     source = ./nvimconf/lua/configs;
     recursive = true;
   };
+  home.file.".config/fourmolu.yaml".text = ''
+    indentation: 2
+    column-limit: 80
+  '';
   home.file.".config/nvim/lua/base16.lua".text = ''
     require('base16-colorscheme').with_config({
         telescope = false,

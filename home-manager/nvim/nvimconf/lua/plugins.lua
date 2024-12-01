@@ -80,7 +80,7 @@ require("lazy").setup({
     {
         "lervag/vimtex",
         lazy = false,
-        ft = "tex",
+        ft = "latex",
         config = function()
             require("configs.vimtex")
         end,

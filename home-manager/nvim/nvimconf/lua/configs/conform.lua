@@ -3,9 +3,9 @@ require("conform").setup({
         lua = { "stylua" },
         python = { "black", "isort" },
         cpp = { "clang_format" },
-        rs = { "rustfmt" },
-        md = { "deno_fmt" },
-        hs = { "ormolu" },
+        rust = { "rustfmt" },
+        markdown = { "deno_fmt" },
+        haskell = { "fourmolu" },
     },
     -- format_after_save = { lsp_format = "fallback" },
     format_after_save = function(bufnr)
