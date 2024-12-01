@@ -24,6 +24,7 @@ local servers = {
     { lsp = "rust_analyzer", ft = { "rust" } },
     { lsp = "lua_ls", ft = { "lua" } },
     { lsp = "ts_ls", ft = { "typescript" } },
+    { lsp = "hls", ft = { "haskell", "lhaskell", "cabal" } },
 }
 
 for _, server in ipairs(servers) do

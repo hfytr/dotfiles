@@ -18,13 +18,13 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 map("n", "<leader>c", function()
-    require("notify").dismiss()
+    require("notify").dismiss({ silent = true, pending = true })
 end, opts)
 
 map("n", "U", "<C-r>", opts)
 
-map("n", "<leader>r", function()
-    vim.cmd("term ranger")
+map("n", "<leader>y", function()
+    vim.cmd("term yazi")
     vim.api.nvim_input("i")
 end, opts)
 --[[

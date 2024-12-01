@@ -11,6 +11,7 @@ require("lazy").setup({
                 "cpp",
                 "rust",
                 "python",
+                "haskell",
             },
         },
     },
@@ -107,7 +108,14 @@ require("lazy").setup({
         config = function()
             require("base16")
         end
-    }
+    },
+    {
+        "neovimhaskell/haskell-vim",
+        ft = { "haskell", "cabal" },
+        config = function()
+            require("configs.haskell-vim")
+        end
+    },
 }, {})
 
 require("configs.quickfix")

@@ -14,7 +14,10 @@ in {
     gtk-layer-shell = false;
 
     modules-left = [ "clock" ];
-    modules-center = [ "river/tags" ];
+    modules-center = [
+      "river/tags"
+      # "river/layout"
+    ];
     modules-right = [
       "cpu"
       "memory"
@@ -39,6 +42,7 @@ in {
     };
 
     "river/tags" = { num-tags = 10; };
+    # "river/layout" = { format = "{}"; };
 
     "cpu" = {
       format = "CPU\n{usage}%";

@@ -40,16 +40,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.txt",
-    callback = function()
-        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-        vim.cmd("normal! G0Vgggq")
-        vim.api.nvim_win_set_cursor(0, { row, col })
-    end,
-})
+--vim.api.nvim_create_autocmd("BufWritePre", {
+--    pattern = "*.txt",
+--    callback = function()
+--        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+--        vim.cmd("normal! G0Vgggq")
+--        vim.api.nvim_win_set_cursor(0, { row, col })
+--    end,
+--})
 vim.api.nvim_create_autocmd("TermClose", {
-    pattern = "term://*ranger",
+    pattern = "term://*yazi",
     callback = function()
         vim.api.nvim_input("<CR>")
     end,

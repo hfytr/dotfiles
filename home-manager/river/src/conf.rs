@@ -120,12 +120,12 @@ fn main() {
             1_u64 << i
         ));
         riverctl(&format!(
-            "map normal Super+Shift {} toggle-view-tags {}",
+            "map normal Super+Alt {} toggle-view-tags {}",
             TAG_KEYS[i],
             1_u32 << i
         ));
         riverctl(&format!(
-            "map normal Super+Alt {} set-view-tags {}",
+            "map normal Super+Shift {} set-view-tags {}",
             TAG_KEYS[i],
             1_u32 << i
         ));
