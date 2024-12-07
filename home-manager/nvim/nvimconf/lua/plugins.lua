@@ -86,23 +86,6 @@ require("lazy").setup({
         end,
     },
     {
-        "rcarriga/nvim-notify",
-        config = function()
-            require("notify").setup({ background_colour = "#000000", render = "wrapped-compact" })
-        end,
-    },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            require("configs.noice")
-        end,
-    },
-    {
         "RRethy/base16-nvim",
         priority = 1000,
         config = function()

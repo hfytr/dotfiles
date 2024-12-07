@@ -18,19 +18,19 @@ in {
   home.file.".config/fourmolu.yaml".text = ''
     indentation: 2
     column-limit: 80
+    in-style: no-space
   '';
   home.file.".config/nvim/lua/base16.lua".text = ''
     require('base16-colorscheme').with_config({
         telescope = false,
         indentblankline = false,
-        notify = true,
+        notify = false,
         ts_rainbow = false,
         cmp = true,
         illuminate = false,
         dapui = false,
     })
     require('base16-colorscheme').setup({
-
         base00 = '${colors.base00}', base01 = '${colors.base01}', base02 = '${colors.base02}', base03 = '${colors.base03}',
         base04 = '${colors.base04}', base05 = '${colors.base05}', base06 = '${colors.base05}', base07 = '${colors.base07}',
         base08 = '${colors.base08}', base09 = '${colors.base09}', base0A = '${colors.base0A}', base0B = '${colors.base0B}',

@@ -13,6 +13,10 @@
     clear_all_shortcuts = true;
   };
 
+  programs.kitty.keybindings = {
+    "ctrl+shift+v" = "paste_from_clipboard";
+  };
+
   programs.kitty.extraConfig = ''
     font_family JetBrainsMono NFM Thin
     bold_font JetBrainsMono NFM ExtraLight

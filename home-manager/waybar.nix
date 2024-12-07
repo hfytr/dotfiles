@@ -16,7 +16,7 @@ in {
     modules-left = [ "clock" ];
     modules-center = [
       "river/tags"
-      # "river/layout"
+      "river/layout"
     ];
     modules-right = [
       "cpu"

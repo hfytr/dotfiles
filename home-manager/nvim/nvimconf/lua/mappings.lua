@@ -17,16 +17,39 @@ map("n", "N", "Nzz", opts)
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
-map("n", "<leader>c", function()
-    require("notify").dismiss({ silent = true, pending = true })
-end, opts)
-
 map("n", "U", "<C-r>", opts)
 
 map("n", "<leader>y", function()
     vim.cmd("term yazi")
     vim.api.nvim_input("i")
 end, opts)
+
+local function show_all_diagnostics()
+    local diagnostics = vim.diagnostic.get() -- Get all diagnostics
+    if vim.tbl_isempty(diagnostics) then
+        vim.notify("No diagnostics found!", vim.log.levels.INFO)
+        return
+    end
+
+    local buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_option(buf, 'bufhidden', 'wipe')
+
+    local lines = {}
+    for _, diag in ipairs(diagnostics) do
+        local line = string.format("[%s] %s: %s",
+            vim.fn.fnamemodify(diag.bufnr and vim.fn.bufname(diag.bufnr) or "", ":t"),
+            diag.lnum + 1,
+            diag.message)
+        table.insert(lines, line)
+    end
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+    vim.api.nvim_command("vsplit")
+    vim.api.nvim_set_current_buf(buf)
+end
+
+map("n", "<leader>e", show_all_diagnostics)
+
 --[[
 :set relativenumber
 :set foldmethod=indent
