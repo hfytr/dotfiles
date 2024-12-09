@@ -11,13 +11,12 @@ require("lazy").setup({
                 "cpp",
                 "rust",
                 "python",
-                "haskell",
             },
         },
     },
     {
         "neovim/nvim-lspconfig",
-        lazy = false,
+        lazy = true,
         config = function()
             require("configs.lspconfig")
         end,
@@ -27,35 +26,18 @@ require("lazy").setup({
         config = function()
             require("configs.conform")
         end,
-        lazy = false,
+        lazy = true,
     },
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
-            {
-                "L3MON4D3/LuaSnip",
-                build = (function()
-                    if vim.fn.has("win32") == 1 then
-                        return
-                    end
-                    return "make install_jsregexp"
-                end)(),
-            },
-            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
-            "rafamadriz/friendly-snippets",
         },
         config = function()
             require("configs.cmp")
         end,
-        lazy = false,
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("configs.lualine")
-        end,
+        lazy = true,
     },
     { "windwp/nvim-autopairs", opts = {} },
     {
@@ -65,28 +47,26 @@ require("lazy").setup({
         end,
         lazy = false,
     },
-    {
-        "brenoprata10/nvim-highlight-colors",
-        opts = {},
-    },
+    { "brenoprata10/nvim-highlight-colors", opts = {}, },
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        lazy = true,
+        lazy = false,
         config = function()
             require("configs.fzf-lua")
         end,
     },
     {
         "lervag/vimtex",
-        lazy = false,
-        ft = "latex",
+        lazy = true,
+        ft = "tex",
         config = function()
             require("configs.vimtex")
         end,
     },
     {
         "RRethy/base16-nvim",
+        lazy = false,
         priority = 1000,
         config = function()
             require("base16")
@@ -94,6 +74,7 @@ require("lazy").setup({
     },
     {
         "neovimhaskell/haskell-vim",
+        lazy = true,
         ft = { "haskell", "cabal" },
         config = function()
             require("configs.haskell-vim")

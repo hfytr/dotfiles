@@ -21,7 +21,8 @@ in {
     in-style: no-space
   '';
   home.file.".config/nvim/lua/base16.lua".text = ''
-    require('base16-colorscheme').with_config({
+    local base16 = require('base16-colorscheme')
+    base16.with_config({
         telescope = false,
         indentblankline = false,
         notify = false,
@@ -30,11 +31,12 @@ in {
         illuminate = false,
         dapui = false,
     })
-    require('base16-colorscheme').setup({
+    base16.setup({
         base00 = '${colors.base00}', base01 = '${colors.base01}', base02 = '${colors.base02}', base03 = '${colors.base03}',
         base04 = '${colors.base04}', base05 = '${colors.base05}', base06 = '${colors.base05}', base07 = '${colors.base07}',
         base08 = '${colors.base08}', base09 = '${colors.base09}', base0A = '${colors.base0A}', base0B = '${colors.base0B}',
         base0C = '${colors.base0C}', base0D = '${colors.base0D}', base0E = '${colors.base0E}', base0F = '${colors.base0F}',
     })
+    vim.cmd('hi Delimiter guifg='..base16.colors.base05)
   '';
 }

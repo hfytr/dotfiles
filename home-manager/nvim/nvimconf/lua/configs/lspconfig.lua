@@ -27,9 +27,26 @@ local servers = {
     { lsp = "hls", ft = { "haskell", "lhaskell", "cabal" } },
 }
 
+local border = {
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"},
+}
+
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+}
+
 for _, server in ipairs(servers) do
     lspconfig[server.lsp].setup({
         on_attach = function(_, bufnr) end,
         filetypes = server.ft,
+        handlers = handlers,
     })
 end

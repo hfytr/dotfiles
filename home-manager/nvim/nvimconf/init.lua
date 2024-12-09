@@ -40,14 +40,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
 })
 
---vim.api.nvim_create_autocmd("BufWritePre", {
---    pattern = "*.txt",
---    callback = function()
---        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
---        vim.cmd("normal! G0Vgggq")
---        vim.api.nvim_win_set_cursor(0, { row, col })
---    end,
---})
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.txt",
+    callback = function()
+        if vim.b.disable_autoformat  or vim.g.disable_autoformat then
+            return
+        end
+        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+        vim.cmd("normal! G0Vgggq")
+        vim.api.nvim_win_set_cursor(0, { row, col })
+    end,
+})
 
 vim.api.nvim_create_autocmd("TermClose", {
     pattern = "term://*yazi",
@@ -87,3 +90,4 @@ vim.o.foldmethod = "indent"
 vim.o.foldlevel = 420
 vim.o.conceallevel = 0
 require("nvim-highlight-colors").turnOn()
+vim.o.statusline = "%#Normal# %F%m%r%=%{&filetype} | %l:%c "
