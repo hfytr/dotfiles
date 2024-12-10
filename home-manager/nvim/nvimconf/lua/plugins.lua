@@ -1,5 +1,13 @@
 require("lazy").setup({
     {
+        "RRethy/base16-nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("base16")
+        end
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         opts = {
             ensure_installed = {
@@ -16,20 +24,23 @@ require("lazy").setup({
     },
     {
         "neovim/nvim-lspconfig",
-        lazy = true,
+        lazy = false,
+        event = { "BufReadPost", "BufNewFile", },
         config = function()
             require("configs.lspconfig")
         end,
     },
     {
         "stevearc/conform.nvim",
+        event = { "BufReadPost", "BufNewFile", },
         config = function()
             require("configs.conform")
         end,
-        lazy = true,
+        lazy = false,
     },
     {
         "hrsh7th/nvim-cmp",
+        event = { "BufReadPost", "BufNewFile", },
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
@@ -63,14 +74,6 @@ require("lazy").setup({
         config = function()
             require("configs.vimtex")
         end,
-    },
-    {
-        "RRethy/base16-nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("base16")
-        end
     },
     {
         "neovimhaskell/haskell-vim",

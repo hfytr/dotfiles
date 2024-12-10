@@ -3,7 +3,7 @@
 
   programs.kitty.settings = {
     window_margin_width = 0;
-    disable_ligatures = "always";
+    disable_ligatures = "cursor";
     dynamic_background_opacity = false;
 
     copy_on_select = true;

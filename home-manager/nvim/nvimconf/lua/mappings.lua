@@ -57,5 +57,4 @@ map("n", "<leader>e", show_all_diagnostics)
 :vnoremap <PageUp> :execute 'normal! ' . (winheight(0) / 2) . 'gkzz'<CR>
 :nnoremap <PageDown> :execute 'normal! ' . (winheight(0) / 2) . 'gjzz'<CR>
 :vnoremap <PageDown> :execute 'normal! ' . (winheight(0) / 2) . 'gjzz'<CR>
-]]
---
+]]--

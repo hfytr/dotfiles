@@ -16,20 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("plugins")
-
-vim.o.hlsearch = false
-vim.wo.number = true
-vim.o.mouse = "a"
-vim.o.clipboard = "unnamedplus"
-vim.o.breakindent = true
-vim.o.undofile = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.wo.signcolumn = "yes"
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-vim.o.completeopt = "menuone,noselect"
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+require("mappings")
+require("nvim-highlight-colors").turnOn()
 
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -74,8 +62,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
-require("mappings")
-
 vim.o.showmode = false
 vim.o.guicursor = "n-v-c:block,i-r-ci-cr-sm:block-blinkwait0-blinkon30-blinkoff30"
 vim.o.number = true
@@ -89,5 +75,17 @@ vim.o.expandtab = true
 vim.o.foldmethod = "indent"
 vim.o.foldlevel = 420
 vim.o.conceallevel = 0
-require("nvim-highlight-colors").turnOn()
-vim.o.statusline = "%#Normal# %F%m%r%=%{&filetype} | %l:%c "
+vim.o.statusline = "%#Normal# %F%m%r%=%l:%c | %{&filetype} "
+vim.o.hlsearch = false
+vim.wo.number = true
+vim.o.mouse = "a"
+vim.o.clipboard = "unnamedplus"
+vim.o.breakindent = true
+vim.o.undofile = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.wo.signcolumn = "yes"
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+vim.o.completeopt = "menuone,noselect"
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
