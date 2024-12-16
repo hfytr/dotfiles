@@ -7,7 +7,6 @@ in {
     ./discord.nix
     ./fish.nix
     ./fastfetch.nix
-    ./kitty.nix
     ./ncmpcpp.nix
     ./nvim
     ./river
@@ -84,4 +83,7 @@ in {
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;
   programs.btop.enable = true;
+
+  programs.foot.enable = true;
+  programs.foot.settings.main.letter-spacing = 0.25;
 }

@@ -18,7 +18,7 @@ in {
   home.file.".config/fourmolu.yaml".text = ''
     indentation: 2
     column-limit: 80
-    in-style: no-space
+    in-style: right-align
   '';
   home.file.".config/nvim/lua/base16.lua".text = ''
     local base16 = require('base16-colorscheme')

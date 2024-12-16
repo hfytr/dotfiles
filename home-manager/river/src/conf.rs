@@ -69,9 +69,9 @@ fn main() {
     );
 
     riverctl("map normal Alt P spawn 'playerctl play-pause'");
-    riverctl("map normal Super T spawn kitty");
+    riverctl("map normal Super T spawn foot");
     riverctl("map normal Super B spawn brave");
-    riverctl("map normal Super F spawn 'kitty yazi'");
+    riverctl("map normal Super F spawn 'foot yazi'");
     riverctl("map normal Super+Shift E spawn wlogout");
     riverctl("map normal None Print spawn 'grim -g \"$(slurp)\" $HOME/media/screenshots/$(date +'%s_grim.png')'");
     // BEMENU_OPTS set by hm doesn't work with riverctl spawn
