@@ -130,7 +130,7 @@
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   stylix.fonts.monospace = {
     package = pkgs.jetbrains-mono;
-    name = "JetBrainsMono NFM Thin";
+    name = "JetBrainsMono NFM";
   };
   stylix.fonts = {
     serif = config.stylix.fonts.monospace;

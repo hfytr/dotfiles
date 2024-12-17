@@ -42,7 +42,7 @@ in {
     };
 
     "river/tags" = { num-tags = 10; };
-    # "river/layout" = { format = "{}"; };
+    "river/layout" = { format = "{}"; min-length = 5; };
 
     "cpu" = {
       format = "CPU\n{usage}%";
@@ -177,6 +177,11 @@ in {
       margin-right: 1px;
       border-radius: 20px;
       transition: all 0.3s ease;
+    }
+
+    #layout {
+      font-size: 7px; 
+      margin-top: 10px;
     }
 
     #clock { margin-top: 10px; }
