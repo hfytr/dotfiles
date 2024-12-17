@@ -1,21 +1,18 @@
 { config, pkgs, lib, ... }:
 let
   rrtui = import ./rrtui.nix { inherit pkgs; };
+  colors = config.lib.stylix.colors;
 in {
   imports = [
-    ./bemenu.nix
     ./discord.nix
     ./fish.nix
     ./fastfetch.nix
-    ./ncmpcpp.nix
     ./nvim
     ./river
     ./starship.nix
-    ./swaync.nix
     ./tmux.nix
     ./waybar.nix
     ./yazi.nix
-    ./zathura.nix
   ];
 
   home.username = "fbwdw";
@@ -27,7 +24,6 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
   
   home.packages = with pkgs; [
-    arduino-ide
     bc
     brave
     dbus
@@ -46,6 +42,8 @@ in {
     lldb
     mkpasswd
     minicom
+    mpc-cli
+    mpd-mpris
     nix-prefetch-github
     poppler_utils
     playerctl
@@ -83,7 +81,34 @@ in {
   programs.home-manager.enable = true;
   programs.zoxide.enable = true;
   programs.btop.enable = true;
+  services.swaync.enable = true;
+
+  services.mpd.enable = true;
+  services.mpd-mpris.enable = true;
+  services.mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
+  services.mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
+  programs.ncmpcpp.enable = true;
 
   programs.foot.enable = true;
-  programs.foot.settings.main.letter-spacing = 0.25;
+  programs.foot.settings.cursor.color = "${colors.base00} ${colors.base05}";
+  programs.foot.settings.main = {
+    term = "xterm-256color";
+    letter-spacing = 0.25;
+    pad = "5x0";
+  };
+
+  programs.bemenu.enable = true;
+  programs.bemenu.settings = {
+    list = 15;
+    prompt = "open";
+    ignorecase = true;
+  };
+
+  programs.zathura.enable = true; 
+  programs.zathura.options.statusbar-home-tilde = true;
+  programs.zathura.extraConfig = ''
+    set selection-clipboard clipboard
+    set incremental-search true
+    set recolor true
+  '';
 }
