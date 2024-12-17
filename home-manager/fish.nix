@@ -32,7 +32,6 @@
       fish_vi_key_bindings
       zoxide init fish --cmd cd | source
       starship init fish | source
-      enable_transience
       eval (ssh-agent -c) && ssh-add ~/.private/git
       set -x RUST_BACKTRACE 1
       clear

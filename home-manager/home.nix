@@ -9,7 +9,6 @@ in {
     ./fastfetch.nix
     ./nvim
     ./river
-    ./starship.nix
     ./tmux.nix
     ./waybar.nix
     ./yazi.nix
@@ -79,6 +78,7 @@ in {
   };
 
   programs.home-manager.enable = true;
+  programs.bat.enable = true;
   programs.zoxide.enable = true;
   programs.btop.enable = true;
   services.swaync.enable = true;
@@ -111,4 +111,15 @@ in {
     set incremental-search true
     set recolor true
   '';
+
+  programs.starship.enable = true;
+  programs.starship.settings = {
+    format = ''[\($username@$hostname\)](blue bold) $directory$package$git_branch$git_status$git_state$character'';
+    username.show_always = true;
+    username.format = "$user";
+    hostname.ssh_only = false;
+    hostname.format = "$ssh_symbol$hostname";
+    git_branch.format = "[$branch(:$remote_branch)]($style) ";
+    add_newline = false;
+  };
 }
