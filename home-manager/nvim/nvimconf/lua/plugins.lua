@@ -39,16 +39,26 @@ require('lazy').setup({
         lazy = false,
     },
     {
-        'hrsh7th/nvim-cmp',
-        event = { 'BufReadPost', 'BufNewFile' },
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-        },
-        config = function()
-            require('configs.cmp')
-        end,
+        'saghen/blink.cmp',
+        version = 'v0.*',
         lazy = true,
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono',
+            },
+            completion = {
+                documentation = {
+                    auto_show = true,
+                    border = 'rounded',
+                    auto_show_delay = 0,
+                },
+                menu = { border = 'rounded' },
+            },
+            sources = { default = { 'lsp', 'path', 'buffer' } },
+        },
+        opts_extend = { 'sources.default' },
     },
     { 'windwp/nvim-autopairs', opts = {} },
     {
@@ -72,7 +82,10 @@ require('lazy').setup({
         lazy = true,
         ft = 'tex',
         config = function()
-            require('configs.vimtex')
+            vim.g.vimtex_view_method = 'zathura'
+            vim.g.vimtex_view_general_viewer = 'zathura'
+            vim.g.vimtex_compiler_latexmk =
+                { aux_dir = 'latex_aux', out_dir = 'latex_out' }
         end,
     },
     {
@@ -84,5 +97,3 @@ require('lazy').setup({
         end,
     },
 }, {})
-
-require('configs.quickfix')

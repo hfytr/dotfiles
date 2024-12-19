@@ -18,6 +18,7 @@ map("n", "K", vim.lsp.buf.hover, opts)
 map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 
 local lspconfig = require("lspconfig")
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 local servers = {
     { lsp = "clangd", ft = { "c", "cpp" } },
     { lsp = "pyright", ft = { "python" } },
@@ -48,5 +49,6 @@ for _, server in ipairs(servers) do
         on_attach = function(_, bufnr) end,
         filetypes = server.ft,
         handlers = handlers,
+        capabilities = capabilities,
     })
 end
