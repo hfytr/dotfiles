@@ -73,11 +73,6 @@
 
   system.stateVersion = "23.11";
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
-
-
   xdg.portal = {
     enable = true;
     config = {common = {default = "wlr";};};
@@ -124,6 +119,7 @@
     openFirewall = true;
   };
 
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
   stylix.enable = true;
   stylix.image = config.lib.stylix.pixel "base00";
   stylix.autoEnable = true;

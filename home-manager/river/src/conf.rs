@@ -70,7 +70,7 @@ fn main() {
 
     riverctl("map normal Alt P spawn 'playerctl play-pause'");
     riverctl("map normal Super T spawn foot");
-    riverctl("map normal Super B spawn brave");
+    riverctl("map normal Super B spawn librewolf");
     riverctl("map normal Super F spawn 'foot yazi'");
     riverctl("map normal Super+Shift E spawn wlogout");
     riverctl("map normal None Print spawn 'grim -g \"$(slurp)\" $HOME/media/screenshots/$(date +'%s_grim.png')'");
@@ -79,7 +79,7 @@ fn main() {
         "map normal Super Return spawn \"bemenu-run \
         --tb '#{}' --nb '#{}' --fb '#{}' --hb '#{}' --sb '#{}' --scb '#{}' --hf '#{}' --sf '#{}' --tf '#{}' --ff '#{}' --nf '#{}' --scf '#{}' --ab '#{}' --af '#{}' \
         --fn 'JetBrainsMono NFM Thin 7' \
-        -i -l 15 -p 'open'\"",
+        -i -w -l 15 -p 'open'\"",
         colors[1],
         colors[1],
         colors[1],

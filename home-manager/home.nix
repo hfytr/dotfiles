@@ -12,6 +12,7 @@ in {
     ./tmux.nix
     ./waybar.nix
     ./yazi.nix
+    ./librewolf.nix
   ];
 
   home.username = "fbwdw";
@@ -24,7 +25,6 @@ in {
   
   home.packages = with pkgs; [
     bc
-    brave
     dbus
     eza
     git
@@ -70,14 +70,11 @@ in {
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:/etc/profiles/per-user/fbwdw/bin:/run/current-system/sw";
   };
 
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-  };
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   programs.home-manager.enable = true;
+  programs.bemenu.enable = true;
   programs.bat.enable = true;
   programs.zoxide.enable = true;
   programs.btop.enable = true;
@@ -94,23 +91,15 @@ in {
   programs.foot.settings.main = {
     term = "xterm-256color";
     letter-spacing = 0.25;
-    pad = "5x0";
-  };
-
-  programs.bemenu.enable = true;
-  programs.bemenu.settings = {
-    list = 15;
-    prompt = "open";
-    ignorecase = true;
+    pad = "5x2";
   };
 
   programs.zathura.enable = true; 
-  programs.zathura.options.statusbar-home-tilde = true;
-  programs.zathura.extraConfig = ''
-    set selection-clipboard clipboard
-    set incremental-search true
-    set recolor true
-  '';
+  programs.zathura.options = {
+    statusbar-home-tilde = true;
+    incremental-search = true;
+    selection-clipboard = "clipboard";
+  };
 
   programs.starship.enable = true;
   programs.starship.settings = {
