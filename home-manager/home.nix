@@ -31,16 +31,15 @@ in {
     feh
     ffmpeg_7
     fzf
+    foliate
     hevea
     (texlive.withPackages (ps: with ps; [
       scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
     ]))
-    perl538Packages.LatexIndent
     libinput
     lutris
     lldb
     mkpasswd
-    minicom
     mpc-cli
     mpd-mpris
     nix-prefetch-github
@@ -99,6 +98,7 @@ in {
     statusbar-home-tilde = true;
     incremental-search = true;
     selection-clipboard = "clipboard";
+    recolor = true;
   };
 
   programs.starship.enable = true;

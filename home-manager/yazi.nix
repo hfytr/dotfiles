@@ -18,21 +18,31 @@
     on = [ i ];
     run = "plugin relative-motions --args=${i}";
     desc = "Move in relative jumps";
-  }) (map toString (builtins.genList (i: i + 1) 9));
+  }) (map toString (builtins.genList (i: i + 1) 9))
+  ++ [
+    { on = [ "E" ]; run = "plugin eza-preview";  desc = "Toggle tree/list dir preview"; }
+    { on = [ "-" ]; run = "plugin eza-preview --args='--inc-level'"; desc = "Increment tree level"; }
+    { on = [ "_" ]; run = "plugin eza-preview --args='--dec-level'"; desc = "Decrement tree level"; }
+  ];
 
   programs.yazi.initLua = ''
     require("relative-motions"):setup({
       show_numbers="relative_absolute",
-      show_motion = true
+      show_motion = true,
+    })
+    require("eza-preview"):setup({
+      level = 2,
+      follow_symlinks = false,
+      dereference = false,
     })
   '';
 
   programs.yazi.plugins = {
     eza-preview = pkgs.fetchFromGitHub {
-      owner = "sharklasers996";
+      owner = "ahkohd";
       repo = "eza-preview.yazi";
-      rev = "7ca4c2558e17bef98cacf568f10ec065a1e5fb9b";
-      hash = "sha256-ncOOCj53wXPZvaPSoJ5LjaWSzw1omHadKDrXdIb7G5U=";
+      rev = "245a1d9c61bbb94063e8ea0746a1a29ac81fee94";
+      hash = "sha256-L7i+uL2kAx3AUr5EAzRrduoV2m4+/tE1gCfbTOSuAc4=";
     };
     relative-motions = pkgs.fetchFromGitHub {
       owner = "dedukun";

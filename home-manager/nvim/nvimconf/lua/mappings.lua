@@ -16,6 +16,9 @@ map("n", "N", "Nzz", opts)
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+map("n", "gq", function()
+    vim.cmd("normal! gg0VGgq")
+end)
 
 map("n", "U", "<C-r>", opts)
 

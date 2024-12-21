@@ -16,4 +16,7 @@
       }
     '';
   };
+  # home.file.".librewolf/librewolf.overrides.cfg".text = ''
+  #   defaultPref("network.file.disable_unc_paths", false);
+  # '';
 }
