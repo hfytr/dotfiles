@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
   rrtui = import ./rrtui.nix { inherit pkgs; };
   colors = config.lib.stylix.colors;
@@ -43,6 +43,7 @@ in {
     mpc-cli
     mpd-mpris
     nix-prefetch-github
+    nodejs_23
     poppler_utils
     playerctl
     pokeget-rs
@@ -55,6 +56,7 @@ in {
     unzip
     vial
     vlc
+    waylock
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     yt-dlp
@@ -65,50 +67,73 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
-    PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin";
+    PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin:/home/fbwdw/.npm-packages/bin";
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:/etc/profiles/per-user/fbwdw/bin:/run/current-system/sw";
   };
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs = {
+    direnv.enable = true;
+    direnv.nix-direnv.enable = true;
 
-  programs.home-manager.enable = true;
-  programs.bemenu.enable = true;
-  programs.bat.enable = true;
-  programs.zoxide.enable = true;
-  programs.btop.enable = true;
-  services.swaync.enable = true;
+    home-manager.enable = true;
+    bemenu.enable = true;
+    bat.enable = true;
+    zoxide.enable = true;
+    btop.enable = true;
+    ncmpcpp.enable = true;
 
-  services.mpd.enable = true;
-  services.mpd-mpris.enable = true;
-  services.mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
-  services.mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
-  programs.ncmpcpp.enable = true;
+    foot.enable = true;
+    foot.settings.cursor.color = "${colors.base00} ${colors.base05}";
+    foot.settings.main = {
+      term = "xterm-256color";
+      letter-spacing = 0.25;
+      pad = "5x2";
+    };
 
-  programs.foot.enable = true;
-  programs.foot.settings.cursor.color = "${colors.base00} ${colors.base05}";
-  programs.foot.settings.main = {
-    term = "xterm-256color";
-    letter-spacing = 0.25;
-    pad = "5x2";
+    zathura.enable = true; 
+    zathura.options = {
+      statusbar-home-tilde = true;
+      incremental-search = true;
+      selection-clipboard = "clipboard";
+      recolor = true;
+    };
+
+    starship.enable = true;
+    starship.settings = {
+      format = ''[\($username@$hostname\)](blue bold) $directory$package$git_branch$git_status$git_state$character'';
+      username.show_always = true;
+      username.format = "$user";
+      hostname.ssh_only = false;
+      hostname.format = "$ssh_symbol$hostname";
+      git_branch.format = "[$branch(:$remote_branch)]($style) ";
+      add_newline = false;
+    };
   };
 
-  programs.zathura.enable = true; 
-  programs.zathura.options = {
-    statusbar-home-tilde = true;
-    incremental-search = true;
-    selection-clipboard = "clipboard";
-    recolor = true;
+  services = {
+    swaync.enable = true;
+    mpd.enable = true;
+    mpd-mpris.enable = true;
+    mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
+    mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
+
+    swayidle.enable = true;
+    swayidle.timeouts = [
+      {
+        timeout = 30;
+        command = ''
+          ${pkgs.waylock}/bin/waylock
+          --init-color ${colors.base00}
+          --input-color ${colors.base03}
+          --input-alt-color ${colors.base04}
+          --fail-color ${colors.base08}
+        '';
+      }
+      { timeout = 60; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+    ];
   };
 
-  programs.starship.enable = true;
-  programs.starship.settings = {
-    format = ''[\($username@$hostname\)](blue bold) $directory$package$git_branch$git_status$git_state$character'';
-    username.show_always = true;
-    username.format = "$user";
-    hostname.ssh_only = false;
-    hostname.format = "$ssh_symbol$hostname";
-    git_branch.format = "[$branch(:$remote_branch)]($style) ";
-    add_newline = false;
-  };
+  home.file.".npmrc".text = ''
+    prefix = /home/fbwdw/.npm-packages
+  '';
 }

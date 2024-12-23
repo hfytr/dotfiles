@@ -1,16 +1,14 @@
-{ inputs, config, pkgs, ... }:
-{
+{ inputs, config, pkgs, ... }: {
   environment.variables = {
     XDG_RUNTIME_DIR = "/run/user/$UID";
   };
 
   imports = [ ./hardware-configuration.nix ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
 
   networking.networkmanager.enable = true;
 
@@ -68,6 +66,10 @@
       options = [ "NOPASSWD" ];
     }];
   }];
+
+  security.pam.services.waylock.text = ''
+    auth include login
+  '';
 
   nixpkgs.config.allowUnfree = true;
 
