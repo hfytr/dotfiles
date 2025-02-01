@@ -1,0 +1,45 @@
+I [22:43:08] --layout                       wide
+I [22:43:08] --layout-alt                   monocle
+I [22:43:08] --stack                        dwindle
+I [22:43:08] --count-master                 1
+I [22:43:08] --ratio-master                 0.5
+I [22:43:08] --count-wide-left              0
+I [22:43:08] --ratio-wide                   0.35
+I [22:43:08] --no-smart-gaps
+I [22:43:08] --inner-gaps                   5
+I [22:43:08] --outer-gaps                   0
+I [22:43:08] --border-width                 3
+I [22:43:08] --border-width-monocle         0
+I [22:43:08] --border-width-smart-gaps      0
+I [22:43:08] --border-color-focused         0xe0def4
+I [22:43:08] --border-color-focused-monocle 0x586e75
+I [22:43:08] --border-color-unfocused       0x6e6a86
+I [22:43:08] --log-threshold                info
+I [22:43:08] wideriver started
+[2025-01-31 22:43:08.931] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2025-01-31 22:43:08.933] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2025-01-31 22:43:08.933] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2025-01-31 22:43:09.068] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+I [22:56:02] wideriver done
+I [22:56:02] --layout                       wide
+I [22:56:02] --layout-alt                   monocle
+I [22:56:02] --stack                        dwindle
+I [22:56:02] --count-master                 1
+I [22:56:02] --ratio-master                 0.5
+I [22:56:02] --count-wide-left              0
+I [22:56:02] --ratio-wide                   0.35
+I [22:56:02] --no-smart-gaps
+I [22:56:02] --inner-gaps                   5
+I [22:56:02] --outer-gaps                   0
+I [22:56:02] --border-width                 3
+I [22:56:02] --border-width-monocle         3
+I [22:56:02] --border-width-smart-gaps      0
+I [22:56:02] --border-color-focused         0xe0def4
+I [22:56:02] --border-color-focused-monocle 0x586e75
+I [22:56:02] --border-color-unfocused       0x6e6a86
+I [22:56:02] --log-threshold                info
+I [22:56:02] wideriver started
+[2025-01-31 22:56:02.208] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2025-01-31 22:56:02.209] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2025-01-31 22:56:02.209] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2025-01-31 22:56:02.343] [info] Bar configured (width: 38, height: 1200) for output: eDP-1

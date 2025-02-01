@@ -10,6 +10,7 @@ in {
       "sidebar.revamp" = true;
       "browser.toolbars.bookmarks.visibility" = "never";
       "ui.key.menuAccessKeyFocuses" = false;
+      "security.fileuri.strict_origin_policy" = false;
     };
     userChrome = ''
       :root {

@@ -22,6 +22,7 @@
       set -ga update-environment TERM_PROGRAM
 
       set-option -g status-position top
+      set-option -g renumber-windows on
 
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle

@@ -2,7 +2,7 @@
 let colors = config.lib.stylix.colors.withHashtag;
 in {
   # deno for markdown formatting
-  home.packages = [ pkgs.neovim pkgs.deno ];
+  home.packages = [ pkgs.neovim ];
   home.file.".config/nvim" = {
     source = ./nvimconf;
     recursive = true;

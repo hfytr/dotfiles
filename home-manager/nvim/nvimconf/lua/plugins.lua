@@ -13,10 +13,12 @@ require('lazy').setup({
             ensure_installed = {
                 'lua',
                 'json',
+                'java',
                 'css',
                 'html',
                 'markdown',
                 'cpp',
+                'c',
                 'rust',
                 'python',
             },

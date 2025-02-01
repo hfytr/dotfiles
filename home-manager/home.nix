@@ -1,7 +1,5 @@
-{ config, pkgs, ... }:
-let
-  rrtui = import ./rrtui.nix { inherit pkgs; };
-  colors = config.lib.stylix.colors;
+{ inputs, config, pkgs, ... }:
+let colors = config.lib.stylix.colors;
 in {
   imports = [
     ./discord.nix
@@ -25,38 +23,40 @@ in {
   
   home.packages = with pkgs; [
     bc
+    brave
+    calibre
     dbus
     eza
     git
     feh
     ffmpeg_7
     fzf
-    foliate
-    hevea
     (texlive.withPackages (ps: with ps; [
       scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
     ]))
     libinput
     lutris
-    lldb
+    networkmanagerapplet
+    networkmanager-openvpn
+    networkmanager-openconnect
+    networkmanager-vpnc
+    nix-prefetch-github
     mkpasswd
     mpc-cli
     mpd-mpris
-    nix-prefetch-github
-    nodejs_23
+    openconnect
     poppler_utils
     playerctl
     pokeget-rs
-    (python312.withPackages (python-pkgs: with python-pkgs; [
-     pyserial 
-    ]))
     ripgrep
-    rrtui
     slurp
     unzip
     vial
+    vpnc
+    vpnc-scripts
     vlc
     waylock
+    qbittorrent
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     yt-dlp

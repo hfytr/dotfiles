@@ -9,8 +9,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
-
   networking.networkmanager.enable = true;
+
+  services.openvpn.servers.protonvpn = {
+    config = ''config ${config.users.users.fbwdw.home}/.private/protonvpn.udp.ovpn'';
+    updateResolvConf = true;
+  };
 
   time.timeZone = "America/New_York";
 
@@ -104,6 +108,7 @@
     git
     gnumake
     libsForQt5.qt5.qtgraphicaleffects
+    firefox
     fish
     wget
     curl
@@ -141,4 +146,7 @@
       terminal = 7;
     };
   };
+
+  nix.settings.trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
+  nix.settings.substituters = [ "https://cache.iog.io" ];
 }

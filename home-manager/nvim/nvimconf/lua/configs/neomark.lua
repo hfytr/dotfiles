@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local modes = {'n', 'i', 'x', 'v'}
 local opts = { noremap = true, silent = true }
 
 require("neomarks").setup({
@@ -21,18 +22,18 @@ vim.keymap.set("n", "<leader>al", function()
 end)
 
 -- gallium layout
-map("n", "<C-g>", function()
+map(modes, "<C-g>", function()
     neomarks.jump_to(5)
 end)
-map("n", "<C-s>", function()
+map(modes, "<C-s>", function()
     neomarks.jump_to(4)
 end)
-map("n", "<C-t>", function()
+map(modes, "<C-t>", function()
     neomarks.jump_to(3)
 end)
-map("n", "<C-r>", function()
+map(modes, "<C-r>", function()
     neomarks.jump_to(2)
 end)
-map("n", "<C-n>", function()
+map(modes, "<C-n>", function()
     neomarks.jump_to(1)
 end)

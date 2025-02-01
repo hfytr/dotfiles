@@ -25,6 +25,7 @@ local servers = {
     { lsp = 'lua_ls', ft = { 'lua' } },
     { lsp = 'ts_ls', ft = { 'typescript' } },
     { lsp = 'hls', ft = { 'haskell', 'lhaskell', 'cabal' } },
+    { lsp = 'jdtls', ft = { 'java' } },
 }
 
 local border = {

@@ -7,8 +7,8 @@
 
 --- Clear the quickfix list.
 local function clear_qf()
-    vim.fn.setqflist({}, "r")
-    vim.cmd("cclose")
+    vim.fn.setqflist({}, 'r')
+    vim.cmd('cclose')
 end
 
 --- Produces an item to be added to the quickfix list
@@ -30,15 +30,15 @@ end
 --- @param list string[]
 local function populate(title, list)
     if #list == 0 then
-        print("Nothing to show")
+        print('Nothing to show')
         return
     end
 
-    vim.fn.setqflist({}, " ", {
+    vim.fn.setqflist({}, ' ', {
         title = title,
         items = list,
     })
-    vim.cmd("copen")
+    vim.cmd('copen')
 end
 
 --- Populates the quickfix list with all diagnostics for the current workspace
@@ -52,7 +52,7 @@ local function diagnostics_to_qf()
         table.insert(qf_list, item)
     end
 
-    populate("Diagnostics", qf_list)
+    populate('Diagnostics', qf_list)
 end
 
 --- Populates the quickfix list with diagnostics that match the given severity level
@@ -70,28 +70,26 @@ local function filtered_to_qf(level)
         end
     end
 
-    populate("Warnings", qf_list)
+    populate('Warnings', qf_list)
 end
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local eopts = { noremap = true, expr = true, silent = true }
 
-map("n", "<leader>tc", function()
+map('n', '<leader>tc', function()
     clear_qf()
-    vim.cmd("cclose")
+    vim.cmd('cclose')
 end)
-map("n", "<leader>tf", function()
+map('n', '<leader>tf', function()
     diagnostics_to_qf()
-    vim.cmd("wincmd p")
+    vim.cmd('wincmd p')
 end)
-map("n", "<leader>tw", function()
+map('n', '<leader>tw', function()
     filtered_to_qf(2)
-    vim.cmd("wincmd p")
+    vim.cmd('wincmd p')
 end)
-map("n", "<leader>te", function()
+map('n', '<leader>te', function()
     filtered_to_qf(1)
-    vim.cmd("wincmd p")
+    vim.cmd('wincmd p')
 end)
-map("n", "<leader>n", ":cn<cr>", opts)
-map("n", "<leader>p", ":cp<cr>", opts)

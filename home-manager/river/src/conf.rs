@@ -1,8 +1,6 @@
 #![allow(deprecated)]
 use std::process::Command;
 use std::sync::LazyLock;
-use std::thread;
-use std::time::Duration;
 
 const TAG_KEYS: [char; 11] = ['N', 'R', 'T', 'S', 'Q', 'M', 'W', 'L', 'D', 'C', 'G'];
 const DIRECTIONS: [(&str, char); 4] = [("left", 'Y'), ("down", 'H'), ("up", 'A'), ("right", 'E')];
@@ -112,12 +110,12 @@ fn main() {
         riverctl(&format!(
             "map normal Alt {} toggle-focused-tags {}",
             TAG_KEYS[i],
-            1_u64 << i
+            1_u32 << i
         ));
         riverctl(&format!(
             "map normal Alt+Control {} set-focused-tags {}",
             TAG_KEYS[i],
-            1_u64 << i
+            1_u32 << i,
         ));
         riverctl(&format!(
             "map normal Super+Alt {} toggle-view-tags {}",
@@ -137,6 +135,7 @@ fn main() {
     riverctl("rule-add ssd");
     riverctl("rule-add -app-id waybar csd");
     riverctl(&format!("rule-add -app-id discord tags {}", 1_u32 << 6));
+    riverctl("input touch-1267-16773-ELAN9004:00_04F3:4185 map-to-output eDP-1");
 
     exec("discord", true);
 }

@@ -51,6 +51,11 @@ in {
       tooltip = false;
     };
 
+    "tray" = {
+        "icon-size" = 21;
+        "spacing" = 10;
+    };
+
     "memory" = {
       format = "RAM\n{percentage}%\n\nSWAP\n{swapPercentage}%";
       interval = 10;

@@ -37,6 +37,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end,
 })
 
+vim.keymap.set('n', "<leader>gq", function()
+    vim.g.disable_txt_formet=True
+end)
+
 vim.api.nvim_create_autocmd('TermClose', {
     pattern = 'term://*yazi',
     callback = function()
