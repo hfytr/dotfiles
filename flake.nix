@@ -7,7 +7,7 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, stylix, ... }: {
+  outputs = inputs@{nixpkgs, home-manager, stylix, ... }: {
     nixosConfigurations.fbwdwNixos =
       let
         system = "x86_64-linux";
@@ -15,7 +15,6 @@
           ./configuration.nix
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.fbwdw = {
               imports = [ ./home-manager/home.nix ];

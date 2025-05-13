@@ -37,8 +37,8 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     end,
 })
 
-vim.keymap.set('n', "<leader>gq", function()
-    vim.g.disable_txt_formet=True
+vim.keymap.set('n', '<leader>gq', function()
+    vim.g.disable_txt_formet = True
 end)
 
 vim.api.nvim_create_autocmd('TermClose', {
@@ -48,18 +48,18 @@ vim.api.nvim_create_autocmd('TermClose', {
     end,
 })
 vim.api.nvim_create_autocmd('BufWritePost', { command = 'mkview' })
-vim.api.nvim_create_autocmd('BufReadPost', {
-    command = 'silent! loadview',
-})
+vim.api.nvim_create_autocmd('BufReadPost', { command = 'silent! loadview' })
 
-local shiftwidths = {
-    haskell = 2,
-    nix = 2,
-}
+local shiftwidths = { haskell = 2, nix = 2 }
 local default_shiftwidth = 4
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
         vim.bo.shiftwidth = shiftwidths[vim.bo.filetype] or default_shiftwidth
+        if vim.bo.filetype == 'rust' then
+            vim.o.colorcolumn = '101'
+        else
+            vim.o.colorcolumn = '81'
+        end
     end,
 })
 
@@ -90,10 +90,22 @@ vim.o.signcolumn = 'no'
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
+vim.o.colorcolumn = '81'
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.disable_txt_format = true
+vim.o.foldtext = 'v:lua.foldtext()'
+vim.o.fillchars = 'fold: '
+vim.o.winborder = 'rounded'
+vim.o.grepprg = 'rg --vimgrep'
+function _G.foldtext()
+    local line_count = vim.v.foldend - vim.v.foldstart + 1
+    local line = vim.fn.getline(vim.v.foldstart)
+    local i = 1
+    while i <= #line and (line:sub(i, i) == ' ' or line:sub(i, i) == '\t') do
+        i = i + 1
+    end
+    return line:sub(1, i - 1) .. line_count .. ' lines'
+end
 
-require('plugins')
-require('nvim-highlight-colors').turnOn()
 require('mappings')
--- require('completions')
+require('plugins')

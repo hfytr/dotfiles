@@ -77,10 +77,9 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local eopts = { noremap = true, expr = true, silent = true }
 
-map('n', '<leader>tc', function()
-    clear_qf()
+map('n', '<leader>tc',
     vim.cmd('cclose')
-end)
+)
 map('n', '<leader>tf', function()
     diagnostics_to_qf()
     vim.cmd('wincmd p')

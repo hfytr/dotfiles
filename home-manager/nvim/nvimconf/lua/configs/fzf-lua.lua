@@ -13,6 +13,8 @@ fzflua.setup({
     'default',
     winopts = { preview = { default = 'bat' } },
     keymap = { fzf = { ['ctrl-q'] = 'select-all+accept' } },
+    files = { no_ignore = true },
+    grep = { no_ignore = true },
 })
 
 map('n', '<leader>ho', function()

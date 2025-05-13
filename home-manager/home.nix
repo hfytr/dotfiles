@@ -2,11 +2,11 @@
 let colors = config.lib.stylix.colors;
 in {
   imports = [
-    ./discord.nix
-    ./fish.nix
     ./fastfetch.nix
+    ./fish.nix
+    ./foot.nix
     ./nvim
-    ./river
+    ./river.nix
     ./tmux.nix
     ./waybar.nix
     ./yazi.nix
@@ -20,7 +20,7 @@ in {
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
-  
+
   home.packages = with pkgs; [
     bc
     brave
@@ -28,14 +28,17 @@ in {
     dbus
     eza
     git
+    fd
     feh
     ffmpeg_7
     fzf
     (texlive.withPackages (ps: with ps; [
       scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
+      parskip ec latexindent titlesec marvosym
     ]))
     libinput
     lutris
+    ncpamixer
     networkmanagerapplet
     networkmanager-openvpn
     networkmanager-openconnect
@@ -45,7 +48,6 @@ in {
     mpc-cli
     mpd-mpris
     openconnect
-    poppler_utils
     playerctl
     pokeget-rs
     ripgrep
@@ -67,9 +69,30 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     GIT_EDITOR = "nvim";
-    PATH = "$PATH:/home/fbwdw/.nix-profile/bin/:/home/fbwdw/.local/bin:/home/fbwdw/.cargo/bin:/home/fbwdw/.npm-packages/bin";
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:/etc/profiles/per-user/fbwdw/bin:/run/current-system/sw";
+    PATH = "$PATH:/home/fbwdw/.local/bin";
   };
+
+  home.file.".local/bin/kindle-share".text = ''
+    #!${pkgs.bash}/bin/bash
+    mkdir -p /mnt/kindle
+    declare -i i=2
+    mkdir -p /mnt/kindle/
+    mount "/dev/$1"
+    shift
+    for var in "$@"
+    do
+      noext="$\{var%.*}"
+      if [ "$noext.azw3" != "$var" ]
+      then
+        echo "CONVERTING $var to $noext.azw3"
+        ebook-convert "$var" "$noext.azw3" 
+      fi
+      echo "$noext"
+      cp "$noext.azw3" "/mnt/kindle/documents/Downloads/$noext.azw3"
+    done
+  '';
+  home.file.".local/bin/kindle-share".executable = true;
 
   programs = {
     direnv.enable = true;
@@ -82,14 +105,6 @@ in {
     btop.enable = true;
     ncmpcpp.enable = true;
 
-    foot.enable = true;
-    foot.settings.cursor.color = "${colors.base00} ${colors.base05}";
-    foot.settings.main = {
-      term = "xterm-256color";
-      letter-spacing = 0.25;
-      pad = "5x2";
-    };
-
     zathura.enable = true; 
     zathura.options = {
       statusbar-home-tilde = true;
@@ -97,6 +112,15 @@ in {
       selection-clipboard = "clipboard";
       recolor = true;
     };
+    zathura.mappings = {
+      "od" = "focus_inputbar ':open ~/Downloads/'";
+      "om" = "focus_inputbar ':open /tmp/mozilla_fbwdw0/'";
+      "ob" = "focus_inputbar ':open ~/docs/school/books/'";
+      "oo" = "focus_inputbar ':open'";
+    };
+    zathura.extraConfig = ''
+      unmap o
+    '';
 
     starship.enable = true;
     starship.settings = {
@@ -117,20 +141,20 @@ in {
     mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
     mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
 
-    swayidle.enable = true;
-    swayidle.timeouts = [
-      {
-        timeout = 30;
-        command = ''
-          ${pkgs.waylock}/bin/waylock
-          --init-color ${colors.base00}
-          --input-color ${colors.base03}
-          --input-alt-color ${colors.base04}
-          --fail-color ${colors.base08}
-        '';
-      }
-      { timeout = 60; command = "${pkgs.systemd}/bin/systemctl suspend"; }
-    ];
+    # swayidle.enable = true;
+    # swayidle.timeouts = [
+    #   {
+    #     timeout = 30;
+    #     command = ''
+    #       ${pkgs.waylock}/bin/waylock
+    #       --init-color ${colors.base00}
+    #       --input-color ${colors.base03}
+    #       --input-alt-color ${colors.base04}
+    #       --fail-color ${colors.base08}
+    #     '';
+    #   }
+    #   { timeout = 60; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+    # ];
   };
 
   home.file.".npmrc".text = ''

@@ -40,7 +40,7 @@
   };
 
   # setup pipewire
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -75,8 +75,6 @@
     auth include login
   '';
 
-  nixpkgs.config.allowUnfree = true;
-
   system.stateVersion = "23.11";
 
   xdg.portal = {
@@ -90,8 +88,8 @@
     };
   };
 
-  # programs.hyprland.enable = true;
   programs.river.enable = true;
+  programs.river.xwayland.enable = true;
   services.greetd = {
     enable = true;
     settings = {
@@ -111,6 +109,7 @@
     firefox
     fish
     wget
+    wayland
     curl
   ];
   # for Vial firmware
@@ -125,6 +124,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+  services.logind.powerKey = "ignore";
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
   stylix.enable = true;

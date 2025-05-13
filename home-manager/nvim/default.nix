@@ -1,4 +1,4 @@
-{ pkgs, config, lib,... }:
+{ pkgs, config, lib, ... }:
 let colors = config.lib.stylix.colors.withHashtag;
 in {
   # deno for markdown formatting
@@ -38,5 +38,7 @@ in {
         base0C = '${colors.base0C}', base0D = '${colors.base0D}', base0E = '${colors.base0E}', base0F = '${colors.base0F}',
     })
     vim.cmd('hi Delimiter guifg='..base16.colors.base05)
+    vim.cmd('hi Folded guibg=None')
+    vim.cmd('hi ColorColumn guibg='..base16.colors.base02)
   '';
 }

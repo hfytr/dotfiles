@@ -32,9 +32,9 @@
       fish_vi_key_bindings
       zoxide init fish --cmd cd | source
       starship init fish | source
-      eval (ssh-agent -c) && ssh-add ~/.private/git
-      set -x RUST_BACKTRACE 1
-      clear
+      eval (ssh-agent -c) &> /dev/null
+      ssh-add ~/.private/git &> /dev/null
+      eval "$(ssh-agent -c 2>/dev/null)" && ssh-add ~/.private/git &>/dev/null
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     '';
   };

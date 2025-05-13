@@ -12,25 +12,12 @@ require('lazy').setup({
         opts = {
             ensure_installed = {
                 'lua',
-                'json',
-                'java',
-                'css',
-                'html',
-                'markdown',
                 'cpp',
                 'c',
                 'rust',
                 'python',
             },
         },
-    },
-    {
-        'neovim/nvim-lspconfig',
-        lazy = false,
-        event = { 'BufReadPost', 'BufNewFile' },
-        config = function()
-            require('configs.lspconfig')
-        end,
     },
     {
         'stevearc/conform.nvim',
@@ -41,34 +28,14 @@ require('lazy').setup({
         lazy = false,
     },
     {
-        'hrsh7th/nvim-cmp',
-        event = { 'BufReadPost', 'BufNewFile' },
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-        },
+        'saghen/blink.cmp',
+        version = '1.*',
         config = function()
             require('configs.cmp')
+            require('configs.lspconfig')
         end,
-        lazy = true,
     },
     { 'windwp/nvim-autopairs', opts = {} },
-    {
-        'saccarosium/neomarks',
-        config = function()
-            require('configs.neomark')
-        end,
-        lazy = false,
-    },
-    { 'brenoprata10/nvim-highlight-colors', opts = {} },
-    {
-        'ibhagwan/fzf-lua',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        lazy = false,
-        config = function()
-            require('configs.fzf-lua')
-        end,
-    },
     {
         'lervag/vimtex',
         lazy = true,
@@ -86,6 +53,14 @@ require('lazy').setup({
         ft = { 'haskell', 'cabal' },
         config = function()
             require('configs.haskell-vim')
+        end,
+    },
+    {
+        'BartSte/nvim-project-marks',
+        lazy = false,
+        branch = '4-issues-dynamically-changing-shada-file',
+        config = function()
+            require('configs.marks')
         end,
     },
 }, {})

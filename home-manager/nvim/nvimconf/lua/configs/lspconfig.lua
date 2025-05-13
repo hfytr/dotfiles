@@ -1,15 +1,32 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- putting in on_attach doesnt work, idk why
-local fzflua = require('fzf-lua')
-
-map('n', '<leader>ca', fzflua.lsp_code_actions, opts)
+vim.diagnostic.config({
+    virtual_text = { prefix = '■' },
+    severity_sort = true,
+    float = { source = 'always' },
+})
+map('n', '<leader>de', function()
+    vim.diagnostic.setqflist()
+    vim.cmd('wincmd p')
+end, opts)
+map('n', '<leader>df', vim.diagnostic.open_float, opts)
 map('n', '<leader>rn', vim.lsp.buf.rename)
-
-map('n', 'gr', fzflua.lsp_references, opts)
-map('n', 'gs', fzflua.lsp_live_workspace_symbols, opts)
-map('n', 'gi', fzflua.lsp_implementations, opts)
+map('n', '<C-i>', function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, opts)
+map('n', 'gr', function()
+    vim.lsp.buf.references()
+    vim.cmd('wincmd p')
+end, opts)
+map('n', 'gs', function()
+    vim.lsp.buf.document_symbol()
+    vim.cmd('wincmd p')
+end, opts)
+map('n', 'gi', function()
+    vim.lsp.buf.implementation()
+    vim.cmd('wincmd p')
+end, opts)
 map('n', 'gd', vim.lsp.buf.definition, opts)
 map('n', '<C-o>', '<C-t>', opts)
 map('n', '<C-i>', ':silent! tag<cr>', opts)
@@ -17,43 +34,39 @@ map('n', '<C-i>', ':silent! tag<cr>', opts)
 map('n', 'K', vim.lsp.buf.hover, opts)
 map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
-local lspconfig = require('lspconfig')
 local servers = {
-    { lsp = 'clangd', ft = { 'c', 'cpp' } },
-    { lsp = 'pyright', ft = { 'python' } },
-    { lsp = 'rust_analyzer', ft = { 'rust' } },
-    { lsp = 'lua_ls', ft = { 'lua' } },
-    { lsp = 'ts_ls', ft = { 'typescript' } },
-    { lsp = 'hls', ft = { 'haskell', 'lhaskell', 'cabal' } },
-    { lsp = 'jdtls', ft = { 'java' } },
-}
-
-local border = {
-    { '╭', 'FloatBorder' },
-    { '─', 'FloatBorder' },
-    { '╮', 'FloatBorder' },
-    { '│', 'FloatBorder' },
-    { '╯', 'FloatBorder' },
-    { '─', 'FloatBorder' },
-    { '╰', 'FloatBorder' },
-    { '│', 'FloatBorder' },
-}
-
-local handlers = {
-    ['textDocument/hover'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = border }
-    ),
-    ['textDocument/signatureHelp'] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = border }
-    ),
+    {
+        lsp = 'clangd',
+        cmd = { 'clangd' },
+        ft = { 'c', 'cpp' },
+        root = { '.clang-format', 'Makefile', 'CMakeLists.txt', '.git' },
+    },
+    {
+        lsp = 'pyright',
+        cmd = { 'pyright-langserver', '--stdio' },
+        ft = { 'python' },
+        root = { 'pyproject.toml', 'requirements.txt', '.git' },
+    },
+    {
+        lsp = 'rust_analyzer',
+        cmd = { 'rust-analyzer' },
+        ft = { 'rust' },
+        root = { 'Cargo.toml', '.git' },
+    },
+    {
+        lsp = 'lua_ls',
+        cmd = { 'lua-language-server' },
+        ft = { 'lua' },
+        root = { 'stylua.toml', '.git' },
+    },
+    -- { lsp = 'hls', ft = { 'haskell', 'lhaskell', 'cabal' } },
 }
 
 for _, server in ipairs(servers) do
-    lspconfig[server.lsp].setup({
-        on_attach = function(_, bufnr) end,
+    vim.lsp.config[server.lsp] = {
+        cmd = server.cmd,
         filetypes = server.ft,
-        handlers = handlers,
-    })
+        root_markers = server.root,
+    }
+    vim.lsp.enable({ server.lsp })
 end
