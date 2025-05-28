@@ -22,13 +22,11 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
 
   home.packages = with pkgs; [
-    bc
     brave
     calibre
     dbus
     eza
     git
-    fd
     feh
     ffmpeg_7
     fzf
@@ -39,23 +37,16 @@ in {
     libinput
     lutris
     ncpamixer
-    networkmanagerapplet
-    networkmanager-openvpn
-    networkmanager-openconnect
-    networkmanager-vpnc
-    nix-prefetch-github
-    mkpasswd
     mpc-cli
     mpd-mpris
-    openconnect
+    # openconnect
     playerctl
     pokeget-rs
-    ripgrep
     slurp
     unzip
     vial
-    vpnc
-    vpnc-scripts
+    # vpnc
+    # vpnc-scripts
     vlc
     waylock
     qbittorrent
@@ -100,9 +91,7 @@ in {
 
     home-manager.enable = true;
     bemenu.enable = true;
-    bat.enable = true;
     zoxide.enable = true;
-    btop.enable = true;
     ncmpcpp.enable = true;
 
     zathura.enable = true; 
@@ -140,24 +129,5 @@ in {
     mpd-mpris.enable = true;
     mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
     mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
-
-    # swayidle.enable = true;
-    # swayidle.timeouts = [
-    #   {
-    #     timeout = 30;
-    #     command = ''
-    #       ${pkgs.waylock}/bin/waylock
-    #       --init-color ${colors.base00}
-    #       --input-color ${colors.base03}
-    #       --input-alt-color ${colors.base04}
-    #       --fail-color ${colors.base08}
-    #     '';
-    #   }
-    #   { timeout = 60; command = "${pkgs.systemd}/bin/systemctl suspend"; }
-    # ];
   };
-
-  home.file.".npmrc".text = ''
-    prefix = /home/fbwdw/.npm-packages
-  '';
 }

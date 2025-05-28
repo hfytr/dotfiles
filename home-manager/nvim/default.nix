@@ -11,10 +11,8 @@ in {
   home.file.".config/nvim/init.lua".source = ./nvimconf/init.lua;
   home.file.".config/nvim/lua/mappings.lua".source = ./nvimconf/lua/mappings.lua;
   home.file.".config/nvim/lua/plugins.lua".source = ./nvimconf/lua/plugins.lua;
-  home.file.".config/nvim/lua/configs" = {
-    source = ./nvimconf/lua/configs;
-    recursive = true;
-  };
+  home.file.".config/nvim/lua/lsp.lua".source = ./nvimconf/lua/lsp.lua;
+  home.file.".config/nvim/lua/cmp.lua".source = ./nvimconf/lua/cmp.lua;
   home.file.".config/fourmolu.yaml".text = ''
     indentation: 2
     in-style: right-align

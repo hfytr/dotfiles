@@ -9,59 +9,11 @@ if not vim.loop.fs_stat(lazypath) then
         'clone',
         '--filter=blob:none',
         'https://github.com/folke/lazy.nvim.git',
-        '--branch=stable', -- latest stable release
+        '--branch=stable',
         lazypath,
     })
 end
 vim.opt.rtp:prepend(lazypath)
-
-local highlight_group =
-    vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.txt',
-    callback = function()
-        if vim.b.disable_txt_format or vim.g.disable_txt_format then
-            return
-        end
-        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-        vim.cmd('normal! G0Vgggq')
-        vim.api.nvim_win_set_cursor(0, { row, col })
-    end,
-})
-
-vim.keymap.set('n', '<leader>gq', function()
-    vim.g.disable_txt_formet = True
-end)
-
-vim.api.nvim_create_autocmd('TermClose', {
-    pattern = 'term://*yazi',
-    callback = function()
-        vim.api.nvim_input('<CR>')
-    end,
-})
-vim.api.nvim_create_autocmd('BufWritePost', { command = 'mkview' })
-vim.api.nvim_create_autocmd('BufReadPost', { command = 'silent! loadview' })
-
-local shiftwidths = { haskell = 2, nix = 2 }
-local default_shiftwidth = 4
-vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-        vim.bo.shiftwidth = shiftwidths[vim.bo.filetype] or default_shiftwidth
-        if vim.bo.filetype == 'rust' then
-            vim.o.colorcolumn = '101'
-        else
-            vim.o.colorcolumn = '81'
-        end
-    end,
-})
 
 vim.o.showmode = false
 vim.o.guicursor =
@@ -69,8 +21,6 @@ vim.o.guicursor =
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 15
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -96,7 +46,6 @@ vim.g.disable_txt_format = true
 vim.o.foldtext = 'v:lua.foldtext()'
 vim.o.fillchars = 'fold: '
 vim.o.winborder = 'rounded'
-vim.o.grepprg = 'rg --vimgrep'
 function _G.foldtext()
     local line_count = vim.v.foldend - vim.v.foldstart + 1
     local line = vim.fn.getline(vim.v.foldstart)
@@ -108,4 +57,6 @@ function _G.foldtext()
 end
 
 require('mappings')
+require('autocmd')
 require('plugins')
+require('marks')

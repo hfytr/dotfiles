@@ -1,4 +1,3 @@
-local opts = { noremap = true, silent = true }
 vim.keymap.set({ 'i', 'n' }, '<C-f>', function()
     local blink = require('blink.cmp')
     if blink.is_documentation_visible() then
