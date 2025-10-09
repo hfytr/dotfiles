@@ -2,15 +2,12 @@
 let colors = config.lib.stylix.colors;
 in {
   imports = [
-    ./fastfetch.nix
     ./fish.nix
     ./foot.nix
-    ./nvim
     ./river.nix
-    ./tmux.nix
     ./waybar.nix
-    ./yazi.nix
     ./librewolf.nix
+    ./nvim.nix
   ];
 
   home.username = "fbwdw";
@@ -22,39 +19,44 @@ in {
   nixpkgs.config.allowUnfreePredicate = (_: true);
 
   home.packages = with pkgs; [
+    alsa-utils
     brave
     calibre
+    cloc
     dbus
+    dnsmasq
     eza
-    git
     feh
     ffmpeg_7
     fzf
+    git
+    libinput
+    localsend
+    lutris
+    man-pages
+    man-pages-posix
+    mpc-cli
+    mpd-mpris
+    ncpamixer
+    phodav
+    playerctl
+    qbittorrent
+    slurp
+    unzip
+    vial
+    virtiofsd
+    vlc
+    waylock
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    xournalpp
+    yt-dlp
+    zathura
+    zoxide
     (texlive.withPackages (ps: with ps; [
       scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
       parskip ec latexindent titlesec marvosym
     ]))
-    libinput
-    lutris
-    ncpamixer
-    mpc-cli
-    mpd-mpris
-    # openconnect
-    playerctl
-    pokeget-rs
-    slurp
-    unzip
-    vial
-    # vpnc
-    # vpnc-scripts
-    vlc
-    waylock
-    qbittorrent
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    yt-dlp
-    zathura
-    zoxide
   ];
 
   home.sessionVariables = {
@@ -89,6 +91,9 @@ in {
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
 
+    ripgrep.enable = true;
+    ripgrep.arguments = [ "--colors=line:fg:yellow" ];
+
     home-manager.enable = true;
     bemenu.enable = true;
     zoxide.enable = true;
@@ -103,9 +108,9 @@ in {
     };
     zathura.mappings = {
       "od" = "focus_inputbar ':open ~/Downloads/'";
+      "ob" = "focus_inputbar ':open ~/docs/books/'";
       "om" = "focus_inputbar ':open /tmp/mozilla_fbwdw0/'";
-      "ob" = "focus_inputbar ':open ~/docs/school/books/'";
-      "oo" = "focus_inputbar ':open'";
+      "oo" = "focus_inputbar ':open '";
     };
     zathura.extraConfig = ''
       unmap o
@@ -121,13 +126,30 @@ in {
       git_branch.format = "[$branch(:$remote_branch)]($style) ";
       add_newline = false;
     };
+
+    yazi.enable = true;
+    yazi.enableFishIntegration = true;
+    yazi.settings.mgr = {
+      show_hidden = true;
+      show_symlink = true;
+      scrolloff = 10;
+      linemode = "size";
+    };
   };
 
   services = {
-    swaync.enable = true;
-    mpd.enable = true;
     mpd-mpris.enable = true;
+    mpd.enable = true;
     mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
     mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
+    swaync.enable = true;
+  };
+
+  # https://nixos.wiki/wiki/Virt-manager
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 }

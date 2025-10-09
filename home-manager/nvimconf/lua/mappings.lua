@@ -1,43 +1,56 @@
-local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local eopts = { noremap = true, expr = true, silent = true }
 
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", eopts)
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", eopts)
-map({ 'n', 'v' }, '<PageUp>', function()
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", eopts)
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", eopts)
+vim.keymap.set({ 'n', 'v' }, '<PageUp>', function()
     vim.cmd.normal(
         tostring(math.floor(vim.api.nvim_win_get_height(0) / 2)) .. 'gkzz'
     )
 end, opts)
-map({ 'n', 'v' }, '<PageDown>', function()
+vim.keymap.set({ 'n', 'v' }, '<PageDown>', function()
     vim.cmd.normal(
         tostring(math.floor(vim.api.nvim_win_get_height(0) / 2)) .. 'gjzz'
     )
 end, opts)
 
-map('n', 'n', 'nzz', opts)
-map('n', 'N', 'Nzz', opts)
-map('n', '<Esc>', ':nohl<cr>', opts)
+vim.keymap.set('n', 'n', 'nzz', opts)
+vim.keymap.set('n', 'N', 'Nzz', opts)
+vim.keymap.set('n', '<Esc>', ':nohl<cr>', opts)
 
-map('v', '<', '<gv')
-map('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
 
 for left, right in pairs({
-    ['('] = ')',
-    ['{'] = '}',
-    ['['] = ']',
-    ["'"] = "'",
-    ['"'] = '"',
-    ['<'] = '>',
+    ['('] = { ')', { '*' } },
+    ['{'] = { '}', { '*' } },
+    ['['] = { ']', { '*' } },
+    ['"'] = { '"', { '*' } },
+    ["'"] = { "'", { "*.[^'txt''tex']" } },
+    ['<'] = { '>', { '*.rs' } },
 }) do
-    map('i', left, left .. right .. '<Left>', opts)
+    vim.api.nvim_create_autocmd('BufEnter', {
+        pattern = right[2],
+        callback = function(_)
+            vim.keymap.set('i', left, left .. right[1] .. '<Left>', opts)
+        end,
+    })
 end
 
-map('n', 'U', '<C-r>', opts)
+vim.keymap.set('n', 'U', '<C-r>', opts)
 
-map({ 'n', 'i' }, '<C-z>', '<esc>:wincmd _<cr> :wincmd |<cr>', opts)
+vim.keymap.set({ 'n', 'i' }, '<C-z>', function()
+    if vim.w.maximized == nil or vim.w.maximized == false then
+        vim.w.maximized = true
+        vim.cmd.wincmd('_')
+        vim.cmd.wincmd('|')
+    else
+        vim.w.maximized = false
+        vim.cmd.wincmd('=')
+    end
+end, opts)
 
-map('n', '<C-q>', function()
+vim.keymap.set('n', '<C-q>', function()
     for _, win in ipairs(vim.fn.getwininfo()) do
         if win.quickfix == 1 then
             vim.cmd.cclose()
@@ -47,8 +60,8 @@ map('n', '<C-q>', function()
     vim.cmd.copen()
     vim.cmd.wincmd('p')
 end, opts)
-map('n', '<leader>gr', ':silent! vim ', { noremap = true })
-map('n', '<leader>f', function()
+vim.keymap.set('n', '<leader>gr', ':silent vim ', { noremap = true })
+vim.keymap.set('n', '<leader>f', function()
     local buf = vim.api.nvim_create_buf(false, true)
     local width = math.floor(vim.o.columns * 0.8)
     local height = math.floor(vim.o.lines * 0.8)
@@ -62,7 +75,8 @@ map('n', '<leader>f', function()
         border = vim.o.winborder,
     })
     local out = {}
-    vim.fn.termopen('fzf', {
+    vim.fn.jobstart({ 'fzf' }, {
+        term = true,
         on_stdout = function(_, data, _)
             for _, line in ipairs(data) do
                 if line ~= '' then
@@ -88,6 +102,7 @@ end, opts)
 
 vim.keymap.set('t', '<C-E>', '<C-\\><C-n>', opts)
 vim.keymap.set({ 'n', 't', 'i' }, '<C-S-C>', function()
+    vim.cmd('wshada!')
     vim.cmd('tabnew')
 end, opts)
 vim.keymap.set({ 'n', 't', 'i' }, '<C-S-F>', function()
@@ -102,14 +117,6 @@ vim.keymap.set('n', '-', function()
     vim.cmd('split')
     vim.cmd('enew')
 end, opts)
-
-local keys = { 'N', 'R', 'T', 'S', 'G' }
-for i, key in ipairs(keys) do
-    vim.keymap.set({ 'n', 't', 'i' }, '<C-S-' .. key .. '>', function()
-        vim.cmd(':tabn ' .. i)
-        reload_marks()
-    end, opts)
-end
 
 vim.keymap.set({ 'n', 't', 'i' }, '<C-S-Y>', function()
     vim.cmd('wincmd h')

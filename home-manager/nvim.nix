@@ -38,5 +38,7 @@ in {
     vim.cmd('hi Delimiter guifg='..base16.colors.base05)
     vim.cmd('hi Folded guibg=None')
     vim.cmd('hi ColorColumn guibg='..base16.colors.base02)
+    vim.cmd('hi LineNrAbove guifg='..base16.colors.base09)
+    vim.cmd('hi LineNrBelow guifg='..base16.colors.base06)
   '';
 }

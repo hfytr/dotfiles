@@ -6,25 +6,16 @@ let colors = config.lib.stylix.colors;
         else b * pow' b (e - 1);
       in pow' base exp;
     powStr = base: exp: builtins.toString (pow base exp);
-    tag_keys = [
-      { key = "N"; tag = powStr 2 0; }
-      { key = "R"; tag = powStr 2 1; }
-      { key = "T"; tag = powStr 2 2; }
-      { key = "S"; tag = powStr 2 3; }
-      { key = "Q"; tag = powStr 2 4; }
-      { key = "M"; tag = powStr 2 5; }
-      { key = "W"; tag = powStr 2 6; }
-      { key = "L"; tag = powStr 2 7; }
-      { key = "D"; tag = powStr 2 8; }
-      { key = "C"; tag = powStr 2 9; }
-      { key = "G"; tag = powStr 2 10; }
-    ];
+    keys = [ "N" "R" "T" "S" "Q" "M" "W" "L" "D" "C" "G" ];
+    tag_key = i: { key = builtins.elemAt keys i; tag = powStr 2 i; };
+    tag_keys = builtins.genList tag_key 11;
 in {
   home.packages = with pkgs; [
     grim
     slurp
     swappy
     wl-clipboard-rs
+    wideriver
     brightnessctl
   ];
 
@@ -39,16 +30,13 @@ in {
       when-typing = "enabled";
     };
     set-cursor-warp = "on-focus-change";
-    background-color = "0x${colors.base00}";
     rule-add = [
       "ssd"
       "-app-id waybar csd"
-      "-app-id discord tags ${powStr 2 6}"
     ];
     map.normal = {
       "Super Q" = "close";
       "Super L" = "spawn waylock ";
-      "Super V" = "toggle-float";
       "Super M" = "toggle-fullscreen";
       "Super Y" = "send-layout-cmd wideriver '--ratio -0.07'";
       "Super E" = "send-layout-cmd wideriver '--ratio +0.07'";
@@ -57,14 +45,12 @@ in {
       "Alt Return" = "send-layout-cmd wideriver '--layout-toggle'";
       "Alt Tab" = "focus-previous-tags";
       "Super Z" = "zoom";
-      "Super P" = "set-view-tags ${builtins.toString (pow 2 32 - 1)}";
 
       "None XF86MonBrightnessUp" = "spawn 'brightnessctl set +10%'";
       "None XF86MonBrightnessDown" = "spawn 'brightnessctl set 10%-'";
       "None XF86AudioMute" = "spawn 'amixer set Master toggle'";
       "None XF86AudioRaiseVolume" = "spawn 'amixer set Master 5%+ | amixer set Master on'";
       "None XF86AudioLowerVolume" = "spawn 'amixer set Master 5%- | amixer set Master on'";
-
 
       "Alt Space" = "focus-output next";
       "Super Space" = "send-to-output next";
@@ -101,13 +87,10 @@ in {
   };
   wayland.windowManager.river.extraConfig = ''
       riverctl input touch-1267-16773-ELAN9004:00_04F3:4185 map-to-output eDP-1
-
       dbus-update-activation-environment --all
-
       ps aux | rg 'wideriver' | awk '{print $2}' | xargs kill
       ps aux | rg 'waybar' | awk '{print $2}' | xargs kill
-
-      nohup ${pkgs.wideriver}/bin/wideriver --layout wide --layout-alt monocle --border-width-monocle 3 --border-width 3 --border-color-focused 0x${colors.base05} --border-color-unfocused 0x${colors.base00} &
+      nohup ${pkgs.wideriver}/bin/wideriver --layout wide --layout-alt monocle --border-width-monocle 3 --border-width 3 &
       nohup ${pkgs.waybar}/bin/waybar -c ~/.config/waybar/config -s ~/.config/waybar/style.css &
   '';
 }

@@ -3,7 +3,8 @@ vim.keymap.set({ 'i', 'n' }, '<C-f>', function()
     if blink.is_documentation_visible() then
         blink.scroll_documentation_down()
     else
-        vim.cmd('cnext')
+        vim.cmd.cnext()
+        vim.cmd.normal('zz')
     end
 end, opts)
 vim.keymap.set({ 'i', 'n' }, '<C-b>', function()
@@ -11,7 +12,8 @@ vim.keymap.set({ 'i', 'n' }, '<C-b>', function()
     if blink.is_documentation_visible() then
         blink.scroll_documentation_up()
     else
-        vim.cmd('cprev')
+        vim.cmd.cprev()
+        vim.cmd.normal('zz')
     end
 end, opts)
 

@@ -26,12 +26,24 @@ in {
       navigator-toolbox {
         background-color: ${colors.base00} !important;
       }
+      #nav-bar {
+          background-color: ${colors.base00} !important;
+          color: var(--lwt-toolbar-field-color, FieldText) !important;
+      }
       #sidebar-main:-moz-window-inactive {
           background-color: ${colors.base00} !important;
       }
+      #urlbar {
+          background-color: ${colors.base00} !important;
+          color: var(--lwt-toolbar-field-color, FieldText) !important;
+      }
+      #urlbar input::selection {
+          background-color: transparent !important;
+          color: var(--lwt-toolbar-field-color, FieldText) !important;
+      }
+      .titlebar-spacer[type="pre-tabs"] {
+          display: none !important;
+      }
     '';
   };
-  # home.file.".librewolf/librewolf.overrides.cfg".text = ''
-  #   defaultPref("network.file.disable_unc_paths", false);
-  # '';
 }

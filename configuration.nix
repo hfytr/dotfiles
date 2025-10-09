@@ -7,6 +7,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -50,6 +51,8 @@
     jack.enable = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   services.blueman.enable = true;
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -60,7 +63,20 @@
     hashedPassword = "$6$ok5nScrid37eI81o$pqX1d9LqDoZYKMCr9VKnLh5MtY/F0zypq5E8oaSQ6meEaoAAwtB338TynnC1JYZHtulTph4xMYY/QG/BG14dj1";
     isNormalUser = true;
     description = "Archim Jhunjhunwala";
-    extraGroups = [ "networkmanager" "wheel" "audio" "sound" "video" "input" "uinput" "tty" "dialout"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "sound"
+      "video"
+      "input"
+      "uinput"
+      "tty"
+      "dialout"
+      "libvirtd"
+      "kvm"
+      "qemu"
+    ];
   };
 
   security.sudo.extraRules = [{
@@ -88,35 +104,36 @@
     };
   };
 
-  programs.river.enable = true;
-  programs.river.xwayland.enable = true;
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r --time -c river";
+        command = "${pkgs.tuigreet}/bin/tuigreet -r --time -c river";
         user = "fbwdw";
       };
     };
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-    alsa-utils
-    gcc
-    git
-    gnumake
-    libsForQt5.qt5.qtgraphicaleffects
-    firefox
-    fish
-    wget
-    wayland
-    curl
-  ];
   # for Vial firmware
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   ''; 
 
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      swtpm.enable = true;
+      ovmf.packages = [ pkgs.OVMFFull.fd ];
+      vhostUserPackages = [ pkgs.virtiofsd ];
+    };
+  };
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  users.groups.libvirtd.members = [ "fbwdw" ];
+  users.groups.kvm.members = [ "fbwdw" ];
+
+  services.speechd.enable = false;
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplip ];
   services.avahi = {
@@ -124,7 +141,6 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  services.logind.powerKey = "ignore";
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
   stylix.enable = true;
@@ -133,7 +149,7 @@
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   stylix.fonts.monospace = {
     package = pkgs.jetbrains-mono;
-    name = "JetBrainsMono NFM";
+    name = "JetBrainsMono NF";
   };
   stylix.fonts = {
     serif = config.stylix.fonts.monospace;
@@ -148,5 +164,6 @@
   };
 
   nix.settings.trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
-  nix.settings.substituters = [ "https://cache.iog.io" ];
+
+  services.openssh.enable = true;
 }

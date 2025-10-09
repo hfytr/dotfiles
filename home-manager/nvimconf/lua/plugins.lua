@@ -18,6 +18,10 @@ require('lazy').setup({
 }, {})
 
 local function on_buf_enter()
+    if vim.g.plugins_initialized ~= nil and vim.g.plugins_initialized then
+        return
+    end
+    vim.g.plugins_initialized = true
     require('lsp')
     require('marks')
 end

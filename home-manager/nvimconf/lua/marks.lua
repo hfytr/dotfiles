@@ -19,22 +19,33 @@ vim.api.nvim_create_user_command('Marks', function(args)
     print(msg)
 end, { nargs = 0 })
 
-local function reload_marks()
+local SHADA_PATH = vim.fn.expand('$HOME/.config/nvim/shadas/')
+function reload_marks()
     local cwd_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':gs?/?-?')
-    local shadafile = '~/.config/nvim/shadas/' .. cwd_name .. '.shada'
-    vim.go.shadafile = vim.fn.findfile(shadafile, '.;')
-    vim.cmd('rshada!')
-    print('Loading shada file at: ' .. shadafile)
+    vim.go.shadafile = SHADA_PATH .. cwd_name .. '.shada'
+    if vim.fn.filereadable(vim.go.shadafile) then
+        vim.cmd('rshada!')
+        print('Loading shada file at: ' .. vim.go.shadafile)
+    end
 end
-reload_marks()
+vim.api.nvim_create_autocmd('DirChanged', { callback = reload_marks })
+
+local keys = { 'N', 'R', 'T', 'S', 'G' }
+for i, key in ipairs(keys) do
+    vim.keymap.set({ 'n', 't', 'i' }, '<C-S-' .. key .. '>', function()
+        vim.cmd('wshada!')
+        vim.cmd(':tabn ' .. i)
+        reload_marks()
+    end, opts)
+end
 
 vim.api.nvim_create_user_command('MakeShada', function(args)
-    local shadafile = '~/.config/nvim/shadas/' .. cwd_name .. '.shada'
-    file.create(shadafile)
+    local cwd_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':gs?/?-?')
+    local file = assert(io.open(SHADA_PATH .. cwd_name .. '.shada', 'w'))
+    file:close()
 end, { nargs = 0 })
 
 vim.api.nvim_create_user_command('Zoxide', function(args)
-    print('running: zoxide query ' .. args.args)
     local cmd = { 'zoxide', 'query' }
     vim.fn.jobstart(vim.list_extend(cmd, args.fargs), {
         on_stdout = function(job_id, data, event)
@@ -42,7 +53,6 @@ vim.api.nvim_create_user_command('Zoxide', function(args)
             if path ~= '' then
                 print('cwd: ' .. path)
                 vim.cmd('lchdir' .. path)
-                reload_marks()
             end
         end,
         on_stderr = function(job_id, data, event)
@@ -54,3 +64,5 @@ vim.api.nvim_create_user_command('Zoxide', function(args)
     })
 end, { nargs = '+' })
 vim.keymap.set('n', 'cd', ':Zoxide ')
+
+reload_marks()

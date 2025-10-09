@@ -46,6 +46,7 @@ vim.g.disable_txt_format = true
 vim.o.foldtext = 'v:lua.foldtext()'
 vim.o.fillchars = 'fold: '
 vim.o.winborder = 'rounded'
+vim.o.wrap = false
 function _G.foldtext()
     local line_count = vim.v.foldend - vim.v.foldstart + 1
     local line = vim.fn.getline(vim.v.foldstart)
@@ -56,7 +57,8 @@ function _G.foldtext()
     return line:sub(1, i - 1) .. line_count .. ' lines'
 end
 
+require('plugins')
+require('colors')
 require('mappings')
 require('autocmd')
-require('plugins')
 require('marks')

@@ -19,6 +19,7 @@ in {
       "river/layout"
     ];
     modules-right = [
+      "network"
       "cpu"
       "memory"
       "backlight"
@@ -41,8 +42,18 @@ in {
       };
     };
 
-    "river/tags" = { num-tags = 10; };
+    "river/tags" = {
+      num-tags = 10;
+      tag-labels = [ "" "" "" "󰍥" "" "" "6" "7" "8" "9" ];
+    };
     "river/layout" = { format = "{}"; min-length = 5; };
+
+    "network" = {
+      format = "WIFI\n{signalStrength}%";
+      justify = "center";
+      format-disconnected = "WIFI\nOFF";
+      tooltip = false;
+    };
 
     "cpu" = {
       format = "CPU\n{usage}%";
@@ -85,14 +96,10 @@ in {
         headset = "󰋋";
         phone = "";
         portable = "";
-        car = "";
         default = [ "󰕿" "󰖀" "󰕾" ];
       };
-      on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.config/dunst/scripts/show_mute.sh";
-      on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +1% && ~/.config/dunst/scripts/show_volume.sh";
-      on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -1% && ~/.config/dunst/scripts/show_volume.sh";
       tooltip = true;
-      tooltip-format = "{icon} {desc} {volume}%";
+      tooltip-format = "{icon} {desc}";
     };
 
     "battery" = {
@@ -117,7 +124,7 @@ in {
     @define-color dull ${colors.base03};
 
     * {
-      font-family: "JetBrains Mono NFM";
+      font-family: "JetBrains Mono NF";
       font-size: 10px;
     }
 
@@ -166,6 +173,7 @@ in {
     #mode,
     #tray,
     #cpu,
+    #network,
     #memory,
     #backlight,
     #pulseaudio.audio,
