@@ -44,6 +44,7 @@ in {
 
     "river/tags" = {
       num-tags = 10;
+      disable-click = true;
       tag-labels = [ "" "" "" "󰍥" "" "" "6" "7" "8" "9" ];
     };
     "river/layout" = { format = "{}"; min-length = 5; };

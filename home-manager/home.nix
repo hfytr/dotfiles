@@ -22,7 +22,6 @@ in {
     alsa-utils
     brave
     calibre
-    cloc
     dbus
     dnsmasq
     eza
@@ -38,11 +37,12 @@ in {
     mpc-cli
     mpd-mpris
     ncpamixer
-    phodav
     playerctl
+    phodav
     qbittorrent
     slurp
     unzip
+    update-nix-fetchgit
     vial
     virtiofsd
     vlc
@@ -50,12 +50,11 @@ in {
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     xournalpp
-    yt-dlp
     zathura
     zoxide
     (texlive.withPackages (ps: with ps; [
       scheme-basic latexmk etoolbox amsfonts amsmath hyperref geometry xetex
-      parskip ec latexindent titlesec marvosym
+      parskip ec titlesec marvosym collection-fontsrecommended changepage enumitem
     ]))
   ];
 
@@ -139,13 +138,22 @@ in {
 
   services = {
     mpd-mpris.enable = true;
-    mpd.enable = true;
-    mpd.musicDirectory = "${config.home.homeDirectory}/media/music/music";
-    mpd.playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
+    mpd = {
+      enable = true;
+      musicDirectory = "${config.home.homeDirectory}/media/music/music";
+      playlistDirectory = "${config.home.homeDirectory}/media/music/playlists";
+    };
     swaync.enable = true;
+    swayidle = {
+      enable = true;
+      systemdTarget = "graphical-session.target";
+      events = [
+        { event = "before-sleep"; command = "${pkgs.waylock}/bin/waylock -fork-on-lock"; }
+      ];
+      extraArgs = [ "-w" ];
+    };
   };
 
-  # https://nixos.wiki/wiki/Virt-manager
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];

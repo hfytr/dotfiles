@@ -4,7 +4,7 @@ in {
   programs.librewolf.enable = true;
   programs.librewolf.profiles.default = {
     settings = {
-      "browser.startup.homepage" = "https://xkcd.com";
+      "browser.startup.homepage" = "xkcd.com";
       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       "sidebar.verticalTabs" = true;
       "sidebar.revamp" = true;

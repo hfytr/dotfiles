@@ -38,6 +38,7 @@ in {
       "Super Q" = "close";
       "Super L" = "spawn waylock ";
       "Super M" = "toggle-fullscreen";
+      "Super F" = "toggle-float";
       "Super Y" = "send-layout-cmd wideriver '--ratio -0.07'";
       "Super E" = "send-layout-cmd wideriver '--ratio +0.07'";
       "Super H" = "send-layout-cmd wideriver '--count -1'";

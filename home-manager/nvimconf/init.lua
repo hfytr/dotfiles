@@ -27,7 +27,12 @@ vim.o.expandtab = true
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 420
 vim.o.conceallevel = 0
-vim.o.statusline = '%#Normal# %F%m%r%=%l:%c | %{&filetype} '
+function _G.my_statusline()
+    local statusline = "%#Normal# %f%m%r%=%l:%c | "
+    local filetype = vim.bo.filetype == "tex" and vim.g.compiling_latex and "tex (compiling)" or "%{&filetype}"
+    return statusline .. filetype
+end
+vim.o.statusline = "%!v:lua._G.my_statusline()"
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'

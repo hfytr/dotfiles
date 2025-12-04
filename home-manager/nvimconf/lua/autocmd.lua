@@ -26,7 +26,12 @@ vim.api.nvim_create_autocmd('WinEnter', {
 })
 vim.api.nvim_create_autocmd('BufWritePost', { command = 'mkview' })
 vim.api.nvim_create_autocmd('BufReadPost', { command = 'silent! loadview' })
-vim.api.nvim_create_autocmd('VimResized', { command = 'wincmd =' })
+vim.api.nvim_create_autocmd('VimResized', {
+    callback = function()
+        vim.cmd('wincmd =')
+        vim.w.maximized = false
+    end
+})
 
 local shiftwidths = { haskell = 2, nix = 2 }
 local colorcolumns = { rust = '101', haskell = '', julia = '' }

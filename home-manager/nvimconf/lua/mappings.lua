@@ -14,6 +14,8 @@ vim.keymap.set({ 'n', 'v' }, '<PageDown>', function()
     )
 end, opts)
 
+vim.keymap.set('n', 'q:', 'q:i', { noremap = true })
+
 vim.keymap.set('n', 'n', 'nzz', opts)
 vim.keymap.set('n', 'N', 'Nzz', opts)
 vim.keymap.set('n', '<Esc>', ':nohl<cr>', opts)
@@ -60,6 +62,23 @@ vim.keymap.set('n', '<C-q>', function()
     vim.cmd.copen()
     vim.cmd.wincmd('p')
 end, opts)
+vim.api.nvim_create_user_command('Grep', function(args)
+    vim.fn.jobstart(vim.list_extend(cmd, args.fargs), {
+        on_stdout = function(job_id, data, event)
+            local path = table.concat(data, ''):gsub('\n', '')
+            if path ~= '' then
+                print('cwd: ' .. path)
+                vim.cmd('lchdir' .. path)
+            end
+        end,
+        on_stderr = function(job_id, data, event)
+            local err_msg = table.concat(data, '\n')
+            if err_msg ~= '' then
+                print('zoxide error: ' .. err_msg)
+            end
+        end,
+    })
+end, { nargs = '+' })
 vim.keymap.set('n', '<leader>gr', ':silent vim ', { noremap = true })
 vim.keymap.set('n', '<leader>f', function()
     local buf = vim.api.nvim_create_buf(false, true)

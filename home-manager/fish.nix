@@ -8,7 +8,7 @@
       nixu = "set -x NIXPKGS_ALLOW_UNFREE 1";
       "nv." = "nvim (fzf)";
       "rsdoc" = "echo (rustc --print sysroot)/share/doc/rust/html/index.html | wl-copy";
-      cloc = "cloc (git ls-files)";
+      rustfmt = "rustfmt --edition=2024";
     };
     functions.fish_greeting = "";
     shellAbbrs = {

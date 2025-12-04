@@ -7,6 +7,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.tmp.cleanOnBoot = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos";
@@ -40,7 +41,6 @@
     xkb.options = "compose:ralt";
   };
 
-  # setup pipewire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -53,9 +53,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = true;
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
@@ -114,7 +114,6 @@
     };
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # for Vial firmware
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   ''; 
