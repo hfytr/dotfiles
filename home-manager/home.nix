@@ -34,7 +34,7 @@ in {
     lutris
     man-pages
     man-pages-posix
-    mpc-cli
+    mpc
     mpd-mpris
     ncpamixer
     playerctl
@@ -147,9 +147,9 @@ in {
     swayidle = {
       enable = true;
       systemdTarget = "graphical-session.target";
-      events = [
-        { event = "before-sleep"; command = "${pkgs.waylock}/bin/waylock -fork-on-lock"; }
-      ];
+      events = {
+        "before-sleep" = "${pkgs.waylock}/bin/waylock -fork-on-lock";
+      };
       extraArgs = [ "-w" ];
     };
   };
