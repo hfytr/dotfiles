@@ -1,0 +1,62 @@
+I [12:51:57] wideriver version 1.3.1
+I [12:51:57] --layout                       wide
+I [12:51:57] --layout-alt                   monocle
+I [12:51:57] --stack                        dwindle
+I [12:51:57] --count-master                 1
+I [12:51:57] --ratio-master                 0.5
+I [12:51:57] --count-wide-left              0
+I [12:51:57] --ratio-wide                   0.35
+I [12:51:57] --no-smart-gaps
+I [12:51:57] --inner-gaps                   0
+I [12:51:57] --outer-gaps                   0
+I [12:51:57] --border-width                 3
+I [12:51:57] --border-width-monocle         3
+I [12:51:57] --border-width-smart-gaps      0
+I [12:51:57] --border-color-focused         0x93a1a1
+I [12:51:57] --border-color-focused-monocle 0x586e75
+I [12:51:57] --border-color-unfocused       0x586e75
+I [12:51:57] --log-threshold                info
+I [12:51:57] wideriver started
+[2025-12-09 12:51:57.631] [info] Using configuration file /home/fbwdw/.config/waybar/config
+[2025-12-09 12:51:57.798] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2025-12-09 12:51:57.798] [info] Using CSS file /home/fbwdw/.config/waybar/style.css
+[2025-12-09 12:51:57.933] [info] Bar configured (width: 38, height: 1200) for output: eDP-1
+Gdk-Message: 14:58:57.505: Unable to load hand2 from the cursor theme
+Gdk-Message: 14:58:57.614: Unable to load arrow from the cursor theme
+Gdk-Message: 14:58:57.614: Unable to load hand2 from the cursor theme
+Gdk-Message: 14:58:57.791: Unable to load arrow from the cursor theme
+Gdk-Message: 11:26:30.950: Unable to load hand2 from the cursor theme
+Gdk-Message: 11:26:31.068: Unable to load arrow from the cursor theme
+Gdk-Message: 14:17:19.412: Unable to load hand2 from the cursor theme
+Gdk-Message: 14:17:19.441: Unable to load arrow from the cursor theme
+Gdk-Message: 14:17:19.442: Unable to load hand2 from the cursor theme
+Gdk-Message: 14:17:19.464: Unable to load arrow from the cursor theme
+Gdk-Message: 14:17:19.464: Unable to load hand2 from the cursor theme
+Gdk-Message: 14:17:19.471: Unable to load arrow from the cursor theme
+Gdk-Message: 23:25:22.943: Unable to load hand2 from the cursor theme
+Gdk-Message: 23:25:23.167: Unable to load arrow from the cursor theme
+Gdk-Message: 23:25:24.407: Unable to load hand2 from the cursor theme
+Gdk-Message: 23:25:24.421: Unable to load arrow from the cursor theme
+Gdk-Message: 23:25:25.427: Unable to load hand2 from the cursor theme
+Gdk-Message: 23:25:25.437: Unable to load arrow from the cursor theme
+Gdk-Message: 23:25:26.532: Unable to load hand2 from the cursor theme
+Gdk-Message: 23:25:26.764: Unable to load arrow from the cursor theme
+[2025-12-11 13:35:01.497] [info] Bar configured (width: 38, height: 2160) for output: DP-1
+[2025-12-11 13:54:39.825] [info] Bar removed from output: DP-1
+Gdk-Message: 22:09:34.472: Unable to load arrow from the cursor theme
+Gdk-Message: 22:51:56.962: Unable to load hand2 from the cursor theme
+Gdk-Message: 22:51:56.983: Unable to load arrow from the cursor theme
+Gdk-Message: 08:35:30.769: Unable to load hand2 from the cursor theme
+Gdk-Message: 08:35:30.842: Unable to load arrow from the cursor theme
+Gdk-Message: 08:42:30.930: Unable to load hand2 from the cursor theme
+Gdk-Message: 08:42:30.968: Unable to load arrow from the cursor theme
+Gdk-Message: 08:42:30.968: Unable to load hand2 from the cursor theme
+Gdk-Message: 08:42:31.020: Unable to load arrow from the cursor theme
+Gdk-Message: 08:44:55.581: Unable to load hand2 from the cursor theme
+Gdk-Message: 08:44:55.668: Unable to load arrow from the cursor theme
+Gdk-Message: 11:01:58.207: Unable to load hand2 from the cursor theme
+Gdk-Message: 11:01:58.228: Unable to load arrow from the cursor theme
+Gdk-Message: 11:01:58.229: Unable to load hand2 from the cursor theme
+Gdk-Message: 11:01:58.250: Unable to load arrow from the cursor theme
+I [19:50:16] Received signal 15 Terminated
+I [19:50:16] wideriver done 0

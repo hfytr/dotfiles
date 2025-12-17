@@ -28,8 +28,12 @@ vim.api.nvim_create_autocmd('BufWritePost', { command = 'mkview' })
 vim.api.nvim_create_autocmd('BufReadPost', { command = 'silent! loadview' })
 vim.api.nvim_create_autocmd('VimResized', {
     callback = function()
-        vim.cmd('wincmd =')
-        vim.w.maximized = false
+        if vim.w.maximized then
+            vim.cmd.wincmd('_')
+            vim.cmd.wincmd('|')
+        else
+            vim.cmd.wincmd('=')
+        end
     end
 })
 

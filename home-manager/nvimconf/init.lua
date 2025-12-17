@@ -34,7 +34,6 @@ function _G.my_statusline()
 end
 vim.o.statusline = "%!v:lua._G.my_statusline()"
 vim.o.hlsearch = false
-vim.wo.number = true
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true

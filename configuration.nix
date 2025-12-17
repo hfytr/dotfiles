@@ -95,8 +95,8 @@
 
   xdg.portal = {
     enable = true;
-    config = {common = {default = "wlr";};};
     wlr.enable = true;
+    config.common.default = "wlr";
     wlr.settings.screencast = {
       output_name = "DP-2";
       chooser_type = "simple";

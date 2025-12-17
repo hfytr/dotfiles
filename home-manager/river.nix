@@ -80,8 +80,8 @@ in {
     }
     // (lib.lists.foldr
       (tag_key: acc: acc // {
-        "Alt ${tag_key.key}" = "toggle-focused-tags ${tag_key.tag}";
-        "Alt+Control ${tag_key.key}" = "set-focused-tags ${tag_key.tag}";
+        "Alt ${tag_key.key}" = "set-focused-tags ${tag_key.tag}";
+        "Alt+Control ${tag_key.key}" = "toggle-focused-tags ${tag_key.tag}";
         "Super+Alt ${tag_key.key}" = "toggle-view-tags ${tag_key.tag}";
         "Super+Shift ${tag_key.key}" = "set-view-tags ${tag_key.tag}";
       }) {} tag_keys);
